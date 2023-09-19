@@ -13,11 +13,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _bodyRotateSpeed;
     [SerializeField] private float _barrleRotateSpeed;
     [SerializeField] private float _aimPlaneHeight;
+    [SerializeField] private float _trackDecalSpawnInterval;
+    private float _tankDecalDistanceMoved;
+    
     [SerializeField] private Transform _tankTopTransform;
     [SerializeField] private Transform _tankBodyTransform;
+    [SerializeField] private Transform _tankTrackDecalSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
     [SerializeField] private float _deflectRadius;
     [SerializeField] private ParticleSystem _fireParticle;
+    [SerializeField] private GameObject _trackDecal;
     
     private Controls _controls;
     private Vector2 _movementInput;
@@ -81,9 +86,18 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        
         _tankBodyTransform.rotation = Quaternion.RotateTowards(_tankBodyTransform.rotation, _tankBodyTargetRotation, Time.deltaTime * _bodyRotateSpeed * _velocityPlanar.magnitude);
         // _tankBodyTransform.rotation = Quaternion.RotateTowards(_tankBodyTransform.rotation, _tankBodyTargetRotation, Time.deltaTime * _bodyRotateSpeed);
 
+
+        _tankDecalDistanceMoved += _velocityPlanar.magnitude * Time.deltaTime;
+
+        if (_tankDecalDistanceMoved > _trackDecalSpawnInterval)
+        {
+            Instantiate(_trackDecal, _tankTrackDecalSpawnTransform.position, _tankTrackDecalSpawnTransform.rotation);
+            _tankDecalDistanceMoved -= _trackDecalSpawnInterval;
+        }
     }
 
 #if UNITY_EDITOR

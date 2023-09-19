@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flySpeed: 6
+  _rotateSpeed: 50
   _maxBounces: 10000
   _hitWallParticle: {fileID: 503861036384543719, guid: c84fe863f960167458c0e2c40093d699,
     type: 3}
