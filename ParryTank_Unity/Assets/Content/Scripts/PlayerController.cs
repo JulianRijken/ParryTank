@@ -4,26 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseTank
 {
+    
+    [Header("Settings")]
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _accelerationSpeed;
     [SerializeField] private float _decelerationSpeed;
-    [SerializeField] private Vector2 _speedAxisMultiplier;
     [SerializeField] private float _bodyRotateSpeed;
     [SerializeField] private float _barrleRotateSpeed;
     [SerializeField] private float _aimPlaneHeight;
     [SerializeField] private float _trackDecalSpawnInterval;
-    private float _tankDecalDistanceMoved;
+    [SerializeField] private float _deflectRadius;
+    [SerializeField] private Vector2 _speedAxisMultiplier;
+
     
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem _fireParticle;
+    [SerializeField] private GameObject _trackDecal;
+    private float _tankDecalDistanceMoved;
+
+    [Header("Transforms")]
     [SerializeField] private Transform _tankTopTransform;
     [SerializeField] private Transform _tankBodyTransform;
     [SerializeField] private Transform _tankTrackDecalSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
-    [SerializeField] private float _deflectRadius;
-    [SerializeField] private ParticleSystem _fireParticle;
-    [SerializeField] private GameObject _trackDecal;
-    
+
     private Controls _controls;
     private Vector2 _movementInput;
     private Vector2 _velocityPlanar;
@@ -146,6 +152,4 @@ public class PlayerController : MonoBehaviour
     {
         _movementInput = context.ReadValue<Vector2>();
     }
-    
-
 }
