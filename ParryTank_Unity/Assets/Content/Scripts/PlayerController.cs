@@ -12,7 +12,6 @@ public class PlayerController : BaseTank
     [SerializeField] private float _accelerationSpeed;
     [SerializeField] private float _decelerationSpeed;
     [SerializeField] private float _bodyRotateSpeed;
-    [SerializeField] private float _barrleRotateSpeed;
     [SerializeField] private float _aimPlaneHeight;
     [SerializeField] private float _trackDecalSpawnInterval;
     [SerializeField] private float _deflectRadius;
@@ -25,7 +24,6 @@ public class PlayerController : BaseTank
     private float _tankDecalDistanceMoved;
 
     [Header("Transforms")]
-    [SerializeField] private Transform _tankTopTransform;
     [SerializeField] private Transform _tankBodyTransform;
     [SerializeField] private Transform _tankTrackDecalSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
@@ -58,16 +56,9 @@ public class PlayerController : BaseTank
 
     private void Update()
     {
-        // Handle gun aiming
-        Vector3 aimDirection = GetMousePos() - _tankTopTransform.position;
-        aimDirection.y = 0;
-        
-        Quaternion targetRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
-        _tankTopTransform.rotation = Quaternion.Slerp(_tankTopTransform.rotation,targetRotation,Time.deltaTime * _barrleRotateSpeed);
-
-        
-        
-        
+        AimTowards(GetMousePos());
+       
+         
         // Handle velocity
         Vector2 targetVelocity = _movementInput.normalized * _speedAxisMultiplier * _moveSpeed;
         float smoothSpeed = (_velocityPlanar.magnitude > targetVelocity.magnitude) ? _decelerationSpeed : _accelerationSpeed;
