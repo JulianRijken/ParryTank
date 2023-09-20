@@ -34,6 +34,11 @@ public class BaseTank : MonoBehaviour, IDamageable
         Vector3 aimDirection = target - _tankTopTransform.position;
         aimDirection.y = 0;
 
+        AimTowardsDirection(aimDirection);
+    }
+    
+    protected void AimTowardsDirection(Vector3 aimDirection)
+    {
         Quaternion targetRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
         _tankTopTransform.rotation = Quaternion.Slerp(_tankTopTransform.rotation, targetRotation, Time.deltaTime * _barrleRotateSpeed);
     }

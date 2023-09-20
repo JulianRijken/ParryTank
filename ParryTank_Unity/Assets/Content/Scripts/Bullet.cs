@@ -36,11 +36,19 @@ public class Bullet : MonoBehaviour
         
         Quaternion targetRotation = Quaternion.LookRotation(new Vector3(_planerVelocity.x, 0, _planerVelocity.y));
         // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotateSpeed);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * _rotateSpeed);
+        // transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * _rotateSpeed);
+        transform.rotation = targetRotation;
     }
     
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider.CompareTag("Bullet"))
+        {
+            DestroyBullet();
+            return;
+        }
+        
+        
         var damageableInterface = collision.gameObject.GetComponent<IDamageable>();
         if (damageableInterface != null)
         {

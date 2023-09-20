@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5063287316873711333}
   - component: {fileID: 1588683786637055818}
   - component: {fileID: 9154146112582659777}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flySpeed: 6
   _rotateSpeed: 1500
-  _maxBounces: 10000
+  _maxBounces: 2
   _damage: 100
   _hitWallParticle: {fileID: 503861036384543719, guid: c84fe863f960167458c0e2c40093d699,
     type: 3}
@@ -112,9 +112,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7915230907628495774}
     m_Modifications:
+    - target: {fileID: 1189025262136874, guid: 4b21d5ab091be5a46ad6e87699fab62c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652709212538448, guid: 4b21d5ab091be5a46ad6e87699fab62c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656536300976936, guid: 4b21d5ab091be5a46ad6e87699fab62c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1722081097931586, guid: 4b21d5ab091be5a46ad6e87699fab62c, type: 3}
       propertyPath: m_Name
       value: FX_Fireball_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722081097931586, guid: 4b21d5ab091be5a46ad6e87699fab62c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4457159321914820, guid: 4b21d5ab091be5a46ad6e87699fab62c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -280,6 +296,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletMesh (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b45fadf06dfc0d49995b30e6e728d33,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -373,6 +394,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BulletMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b45fadf06dfc0d49995b30e6e728d33,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
