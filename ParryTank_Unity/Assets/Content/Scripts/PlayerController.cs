@@ -130,13 +130,10 @@ public class PlayerController : BaseTank
         foreach (var collision in collisions)
         {
             Bullet bullet = collision.GetComponent<Bullet>();
+            
             if (bullet)
-            {
                 bullet.SetBulletDirection(_tankTopTransform.forward);
-            }
         }
-
-        
     }
 
     private void OnMovementInput(InputAction.CallbackContext context)

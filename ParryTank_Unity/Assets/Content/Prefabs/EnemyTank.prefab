@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankTopTransform: {fileID: 6811713353735035213}
-  _barrleRotateSpeed: 40
+  _barrleRotateSpeed: 60
   _slerpSmoothing: 0
   _tankHealth: 100
   _deathDecal: {fileID: 4459042517343489435, guid: 6c99933e10893524c8d3571900eb8ca7,
@@ -651,3 +651,4 @@ MonoBehaviour:
   _fireTransform: {fileID: 617685159455904518}
   _aimBounceChecks: 3
   _minimumAngleForFire: 10
+  _minimumDistanceForFire: 15

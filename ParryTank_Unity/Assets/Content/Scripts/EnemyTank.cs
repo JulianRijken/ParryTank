@@ -11,10 +11,11 @@ public class EnemyTank : BaseTank
     [SerializeField] private Transform _fireTransform;
     [SerializeField] private int _aimBounceChecks;
     [SerializeField] private float _minimumAngleForFire;
+    [SerializeField] private float _minimumDistanceForFire;
 
     private Vector3 _aimDirection = Vector3.zero;
     private bool _canFire = false;
-    
+    private bool _playerInRange;
 
     struct CheckResult
     {
@@ -34,7 +35,6 @@ public class EnemyTank : BaseTank
     {
         StartCoroutine(FireLoop());
         StartCoroutine(FindTargetLoopEnumerator());
-
     }
 
     protected override void OnDeath()
@@ -51,10 +51,14 @@ public class EnemyTank : BaseTank
 
             float angle = Vector3.Angle(_fireTransform.forward, _aimDirection);
 
-            if (angle <= _minimumAngleForFire && _canFire)
-            {
-                Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
-            }
+
+
+                if (angle <= _minimumAngleForFire && _canFire && _playerInRange)
+                {
+                    Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
+                }
+
+            
             // else
             // {
             //     float radian = Random.Range(0.0f,Mathf.PI * 2.0f);
@@ -66,8 +70,11 @@ public class EnemyTank : BaseTank
     private void Update()
     {
         _aimDirection.y = 0.0f;
+        
         if(_aimDirection.magnitude > 0)
             AimTowardsDirection(_aimDirection);
+
+        _playerInRange = (Vector3.Distance(transform.position, GameManager.Player.transform.position) < _minimumDistanceForFire);
     }
 
     private void FireBullet()
@@ -82,6 +89,7 @@ public class EnemyTank : BaseTank
         {
             // yield return new WaitForEndOfFrame();
 
+            yield return new WaitUntil(() => _playerInRange);
             
             CheckResult closestCheckResult = new CheckResult(false,float.MaxValue);
             for (int angle = 0; angle < 360; angle++)
@@ -130,7 +138,7 @@ public class EnemyTank : BaseTank
 
             if (hit.collider.CompareTag("Enemy"))
             {
-                Debug.DrawLine(fromPoint,hit.point, Color.green,1.0f);
+                Debug.DrawLine(fromPoint,hit.point, Color.red,0.5f);
 
                 checkResult.hasHit = false;
                 return checkResult;
@@ -139,7 +147,7 @@ public class EnemyTank : BaseTank
             
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.DrawLine(fromPoint,hit.point, Color.red,1.0f);
+                Debug.DrawLine(fromPoint,hit.point, Color.green,0.5f);
 
                 checkResult.hasHit = true;
                 return checkResult;

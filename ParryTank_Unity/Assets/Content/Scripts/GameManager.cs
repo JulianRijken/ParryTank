@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private PlayerController _playerController;
+    
     [SerializeField] private Transform _mainCameraTransform;
-    [SerializeField] private AnimationCurve _cameraMoveCurve;
-    [SerializeField] private float _levelOffset;
-    [SerializeField] private float _transitionTime;
+    [SerializeField] private float _levelMoveSpeed;
+    
+    [SerializeField] private Transform _roller;
+    [SerializeField] private float _rollerRotateSpeedMultiplier;
     
     public static GameManager Instance { get; private set; }
 
@@ -19,12 +21,9 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public static PlayerController GetPlayer()
-    {
-        return Instance._playerController;
-    }
+    public static PlayerController Player => Instance._playerController;
 
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
@@ -32,27 +31,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartCoroutine(TransitionCoroutine());
-        }
+        Vector3 cameraPosition = _mainCameraTransform.transform.position;
+        cameraPosition.x += _levelMoveSpeed * Time.deltaTime;
+        _mainCameraTransform.position = cameraPosition;
+        
+        _roller.Rotate(Vector3.forward,Time.deltaTime * _rollerRotateSpeedMultiplier * _levelMoveSpeed);
     }
 
-    private IEnumerator TransitionCoroutine()
-    {
-        float alpha = 0f;
- 
-        while (true)
-        {
-            Vector3 cameraPosition = _mainCameraTransform.position;
-            cameraPosition.x = _cameraMoveCurve.Evaluate(alpha) * _levelOffset;
-            _mainCameraTransform.position = cameraPosition;
-            
-            if (alpha >= 1f) break;
- 
-            yield return new WaitForEndOfFrame();
- 
-            alpha = Mathf.Clamp01(alpha + (Time.deltaTime * (1.0f / _transitionTime)));
-        }
-    }
+
 }
