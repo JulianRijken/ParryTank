@@ -14,7 +14,7 @@ public class TankTrack : MonoBehaviour
     {
         _decalProjector.fadeFactor -= Time.deltaTime * _fadeOutSpeed;
 
-        if( _decalProjector.fadeFactor < 0.0f)
+        if( _decalProjector.fadeFactor <= 0.0f)
             Destroy(gameObject);
     }
     

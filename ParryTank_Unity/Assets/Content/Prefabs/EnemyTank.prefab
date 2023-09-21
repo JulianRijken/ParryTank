@@ -637,7 +637,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tankTopTransform: {fileID: 6811713353735035213}
-  _barrleRotateSpeed: 1
+  _barrleRotateSpeed: 40
+  _slerpSmoothing: 0
   _tankHealth: 100
   _deathDecal: {fileID: 4459042517343489435, guid: 6c99933e10893524c8d3571900eb8ca7,
     type: 3}

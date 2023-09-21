@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9058265299703920189}
   - component: {fileID: 5158478595677674911}
   - component: {fileID: 7121053327423318716}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5337497984436827608}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeflectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 5534445742045282314}
   - component: {fileID: 81994454091572781}
   - component: {fileID: 4266735555135353373}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 8991685139814999656}
   - component: {fileID: 9135815707968044388}
   - component: {fileID: 3288394431857753386}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 8715043068060162339}
   - component: {fileID: 2570607958618242867}
   - component: {fileID: 9100087641387364949}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7934395160928542664}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DeathDecalSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 2535333375102730213}
   serializedVersion: 2
   m_LocalRotation: {x: -0.16465628, y: -0.6876689, z: 0.6876686, w: -0.1646564}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 7737388334572336078}
   - component: {fileID: 3951171432915339199}
   - component: {fileID: 528220877393591345}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FX_Explosion_Large_Dark_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5326,9 +5326,9 @@ GameObject:
   - component: {fileID: 7283433874086185563}
   - component: {fileID: 8281939620278077664}
   - component: {fileID: 7967235878425710874}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerTank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5405,6 +5405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b13fa2df2504546ae8751182692c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tankTopTransform: {fileID: 5534445742045282314}
+  _barrleRotateSpeed: 10
+  _slerpSmoothing: 1
   _tankHealth: 100
   _deathDecal: {fileID: 4459042517343489435, guid: 6c99933e10893524c8d3571900eb8ca7,
     type: 3}
@@ -5413,7 +5416,6 @@ MonoBehaviour:
   _accelerationSpeed: 55
   _decelerationSpeed: 30
   _bodyRotateSpeed: 120
-  _barrleRotateSpeed: 10
   _aimPlaneHeight: 0.5
   _trackDecalSpawnInterval: 0.25
   _deflectRadius: 0.85
@@ -5421,7 +5423,6 @@ MonoBehaviour:
   _fireParticle: {fileID: 3951171432915339199}
   _trackDecal: {fileID: 4459042517343489435, guid: 4704eea71407fca45a63ba77aedff6da,
     type: 3}
-  _tankTopTransform: {fileID: 5534445742045282314}
   _tankBodyTransform: {fileID: 182249283096238397}
   _tankTrackDecalSpawnTransform: {fileID: 754346814346864329}
   _deflectPoint: {fileID: 5337497984436827608}
@@ -5463,7 +5464,7 @@ GameObject:
   - component: {fileID: 2034249613447670223}
   - component: {fileID: 9025335184060408663}
   - component: {fileID: 6694435482182642584}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BodyMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5546,7 +5547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 754346814346864329}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrackDecalSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5577,7 +5578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 182249283096238397}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TankBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,6 +7,7 @@ public class BaseTank : MonoBehaviour, IDamageable
     [Header("Aiming")]
     [SerializeField] protected Transform _tankTopTransform;
     [SerializeField] protected float _barrleRotateSpeed;
+    [SerializeField] protected bool _slerpSmoothing;
 
     [SerializeField] protected float _tankHealth = 100.0f;
     
@@ -40,6 +41,10 @@ public class BaseTank : MonoBehaviour, IDamageable
     protected void AimTowardsDirection(Vector3 aimDirection)
     {
         Quaternion targetRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
-        _tankTopTransform.rotation = Quaternion.Slerp(_tankTopTransform.rotation, targetRotation, Time.deltaTime * _barrleRotateSpeed);
+        
+        if(_slerpSmoothing)
+            _tankTopTransform.rotation = Quaternion.Slerp(_tankTopTransform.rotation, targetRotation, Time.deltaTime * _barrleRotateSpeed);
+        else
+            _tankTopTransform.rotation = Quaternion.RotateTowards(_tankTopTransform.rotation, targetRotation, Time.deltaTime * _barrleRotateSpeed);
     }
 }

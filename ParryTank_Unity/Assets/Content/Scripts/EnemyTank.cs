@@ -55,11 +55,11 @@ public class EnemyTank : BaseTank
             {
                 Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
             }
-            else
-            {
-                float radian = Random.Range(0.0f,Mathf.PI * 2.0f);
-                _aimDirection = new Vector3(Mathf.Cos(radian), 0.0f,Mathf.Sin(radian));
-            }
+            // else
+            // {
+            //     float radian = Random.Range(0.0f,Mathf.PI * 2.0f);
+            //     _aimDirection = new Vector3(Mathf.Cos(radian), 0.0f,Mathf.Sin(radian));
+            // }
         }
     }
     
@@ -80,8 +80,11 @@ public class EnemyTank : BaseTank
     {
         while (true)
         {
+            // yield return new WaitForEndOfFrame();
+
+            
             CheckResult closestCheckResult = new CheckResult(false,float.MaxValue);
-            for (int angle = 0; angle < 360; angle += 5)
+            for (int angle = 0; angle < 360; angle++)
             {
                 yield return new WaitForEndOfFrame();
                 
