@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+
+     
+        
+        
     }
 
     private void Update()
@@ -34,8 +39,8 @@ public class GameManager : MonoBehaviour
         Vector3 cameraPosition = _mainCameraTransform.transform.position;
         cameraPosition.x += _levelMoveSpeed * Time.deltaTime;
         _mainCameraTransform.position = cameraPosition;
-        
-        _roller.Rotate(Vector3.forward,Time.deltaTime * _rollerRotateSpeedMultiplier * _levelMoveSpeed);
+
+        _roller.Rotate(Vector3.forward, Time.deltaTime * _rollerRotateSpeedMultiplier * _levelMoveSpeed);
     }
 
 
