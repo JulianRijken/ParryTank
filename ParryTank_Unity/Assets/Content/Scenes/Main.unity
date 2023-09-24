@@ -719,6 +719,7 @@ MonoBehaviour:
   _levelPartPrefabs:
   - {fileID: 7695361551524280291, guid: 9a822c446bc3851418655a2622e0a634, type: 3}
   - {fileID: 7695361551524280291, guid: 0505149006f51c344820084469d9ad30, type: 3}
+  - {fileID: 7695361551524280291, guid: 6931d0d7883a19b43a3124a79240f29c, type: 3}
   _camera: {fileID: 0}
 --- !u!4 &476363819
 Transform:
