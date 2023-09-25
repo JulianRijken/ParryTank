@@ -49,7 +49,7 @@ public class Bomb : MonoBehaviour
 
         Destroy(gameObject);
 
-        AudioManager.PlaySound(SoundType.bombExplode);
+        AudioManager.PlaySound(SoundType.explosion);
     }
 
     private void OnDrawGizmos()

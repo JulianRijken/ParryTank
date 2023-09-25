@@ -478,7 +478,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5407,9 +5407,11 @@ MonoBehaviour:
   _decelerationSpeed: 30
   _bodyRotateSpeed: 120
   _aimPlaneHeight: 0.5
-  _trackDecalSpawnInterval: 0.25
+  _trackDecalSpawnInterval: 0.31
   _deflectRadius: 0.85
   _speedAxisMultiplier: {x: 1, y: 1.2}
+  _trackSoundInterval: 0
+  _fireSound: 5
   _fireParticle: {fileID: 3951171432915339199}
   _trackDecal: {fileID: 4459042517343489435, guid: 4704eea71407fca45a63ba77aedff6da,
     type: 3}

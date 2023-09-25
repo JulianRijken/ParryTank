@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Julian.Sound;
 using UnityEngine;
 
 public class BaseTank : MonoBehaviour, IDamageable
@@ -19,6 +20,7 @@ public class BaseTank : MonoBehaviour, IDamageable
     protected virtual void OnDeath()
     {
         Instantiate(_deathDecal, _deathDecalSpawnTransform.position, _deathDecalSpawnTransform.rotation);
+        AudioManager.PlaySound(SoundType.explosion);
     }
 
     public void OnHealthChange(float delta)

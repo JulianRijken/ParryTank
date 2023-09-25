@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Julian.Sound;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -73,11 +74,13 @@ public class Bullet : MonoBehaviour
         _planerVelocity = reflectedVector;
 
         Instantiate(_hitWallParticle, transform.position, Quaternion.identity);
+        AudioManager.PlaySound(SoundType.bulletBounce);
     }
 
     private void DestroyBullet()
     {
         Instantiate(_destroyPartice, transform.position, Quaternion.identity);
+        AudioManager.PlaySound(SoundType.bulletExplode);
         Destroy(gameObject);
     }
     

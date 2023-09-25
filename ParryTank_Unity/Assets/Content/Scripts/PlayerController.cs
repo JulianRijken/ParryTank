@@ -17,6 +17,9 @@ public class PlayerController : BaseTank
     [SerializeField] private float _trackDecalSpawnInterval;
     [SerializeField] private float _deflectRadius;
     [SerializeField] private Vector2 _speedAxisMultiplier;
+    [SerializeField] private float _trackSoundInterval;
+    [SerializeField] protected SoundType _fireSound;
+    private float _trackSoundTimer;
 
     
     [Header("Effects")]
@@ -31,12 +34,16 @@ public class PlayerController : BaseTank
     [SerializeField] private Transform _bombSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
 
+    
     private Controls _controls;
     private Vector2 _movementInput;
     private Vector2 _velocityPlanar;
     private Rigidbody _rigidbody;
     private Camera _mainCamera;
-    private Quaternion _tankBodyTargetRotation;
+    private Quaternion _tankBodyTargetRotation= Quaternion.identity;
+
+    public static Action _onPlayerDeath;
+    
     
     private void Awake()
     {
@@ -51,13 +58,7 @@ public class PlayerController : BaseTank
 
         _controls.Player.Attack.performed += OnAttackInput;
     }
-
-    private void Start()
-    {
-        _controls.Enable();
-        
-        _tankBodyTargetRotation = Quaternion.identity;
-    }
+    
 
     private void Update()
     {
@@ -99,6 +100,8 @@ public class PlayerController : BaseTank
         {
             Instantiate(_trackDecal, _tankTrackDecalSpawnTransform.position, _tankTrackDecalSpawnTransform.rotation);
             _tankDecalDistanceMoved -= _trackDecalSpawnInterval;
+            
+            AudioManager.PlaySound(SoundType.track);
         }
     }
 
@@ -111,6 +114,20 @@ public class PlayerController : BaseTank
     }
 #endif
 
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        _onPlayerDeath?.Invoke();
+    }
+
+    public void EnableControls(bool enabled)
+    {
+        if(enabled)
+            _controls.Enable();
+        else
+            _controls.Disable();
+    }
+    
     private Vector3 GetMousePos()
     {
         if (_mainCamera)
@@ -129,7 +146,7 @@ public class PlayerController : BaseTank
     public void OnAttackInput(InputAction.CallbackContext context)
     {
         _fireParticle.Play();
-
+        AudioManager.PlaySound(_fireSound);
         
         var collisions = Physics.OverlapSphere(_deflectPoint.position, _deflectRadius);
         foreach (var collision in collisions)

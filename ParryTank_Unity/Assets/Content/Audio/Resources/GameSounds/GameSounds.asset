@@ -16,8 +16,16 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 8300000, guid: a590d16187722964fb054bdb8420d674, type: 3}
     - {fileID: 8300000, guid: 0e56d650c7b6e22418afb4c00b875b5b, type: 3}
+    - {fileID: 24300002, guid: 232ce6523ceaae44e9196d99120deef4, type: 2}
+    - {fileID: 8300000, guid: 4ddbe8ec59170ed4d88c1189a42d540c, type: 3}
+    - {fileID: 8300000, guid: 80c9e1e6f9098b54793977aef53d75ff, type: 3}
+    - {fileID: 8300000, guid: 696221306f597ad4aa745dd3d41f89b1, type: 3}
+    - {fileID: 8300000, guid: b5a7ac16c5e26d641bfa0dbfe8c27fee, type: 3}
+    - {fileID: 8300000, guid: 105b466b7a4b08d4ea440df5220f8135, type: 3}
+    - {fileID: 8300000, guid: 028bbce7abbfdfe449b186aa2caf2253, type: 3}
+    - {fileID: 8300000, guid: a590d16187722964fb054bdb8420d674, type: 3}
+    - {fileID: 8300000, guid: 1f0304bce2821a94494806b69347d073, type: 3}
     - {fileID: 8300000, guid: cb39dc9776611cf4ab677e95a936c9b4, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -43,13 +51,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 2
+      Data: 0
     - Name: $v
       Entry: 7
       Data: Julian.Sound.Sound, Assembly-CSharp
@@ -69,8 +77,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: MixerGroup
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: UsePitchRange
       Entry: 5
       Data: true
@@ -106,7 +114,154 @@ MonoBehaviour:
       Data: 
     - Name: Volume
       Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
       Data: 1
+    - Name: $v
+      Entry: 7
+      Data: Julian.Sound.Sound, Assembly-CSharp
+    - Name: Clips
+      Entry: 7
+      Data: 3|UnityEngine.AudioClip[], UnityEngine.AudioModule
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: MixerGroup
+      Entry: 10
+      Data: 1
+    - Name: UsePitchRange
+      Entry: 5
+      Data: true
+    - Name: PitchRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0.98
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Pitch
+      Entry: 4
+      Data: 0
+    - Name: UseVolumeRange
+      Entry: 5
+      Data: false
+    - Name: VolumeRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Volume
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: Julian.Sound.Sound, Assembly-CSharp
+    - Name: Clips
+      Entry: 7
+      Data: 4|UnityEngine.AudioClip[], UnityEngine.AudioModule
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: MixerGroup
+      Entry: 10
+      Data: 1
+    - Name: UsePitchRange
+      Entry: 5
+      Data: false
+    - Name: PitchRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Pitch
+      Entry: 4
+      Data: 1
+    - Name: UseVolumeRange
+      Entry: 5
+      Data: false
+    - Name: VolumeRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Volume
+      Entry: 4
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -124,13 +279,13 @@ MonoBehaviour:
       Data: Julian.Sound.Sound, Assembly-CSharp
     - Name: Clips
       Entry: 7
-      Data: 3|UnityEngine.AudioClip[], UnityEngine.AudioModule
+      Data: 5|UnityEngine.AudioClip[], UnityEngine.AudioModule
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 10
-      Data: 1
+      Data: 7
     - Name: 
       Entry: 13
       Data: 
@@ -138,20 +293,20 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: MixerGroup
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: UsePitchRange
       Entry: 5
-      Data: true
+      Data: false
     - Name: PitchRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 4
-      Data: 1.2
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -175,7 +330,7 @@ MonoBehaviour:
       Data: 
     - Name: Volume
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -193,13 +348,13 @@ MonoBehaviour:
       Data: Julian.Sound.Sound, Assembly-CSharp
     - Name: Clips
       Entry: 7
-      Data: 4|UnityEngine.AudioClip[], UnityEngine.AudioModule
+      Data: 6|UnityEngine.AudioClip[], UnityEngine.AudioModule
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 10
-      Data: 2
+      Data: 8
     - Name: 
       Entry: 13
       Data: 
@@ -207,26 +362,26 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: MixerGroup
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: UsePitchRange
       Entry: 5
-      Data: true
+      Data: false
     - Name: PitchRange
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 4
-      Data: 1.2
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
     - Name: Pitch
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: UseVolumeRange
       Entry: 5
       Data: false
@@ -244,7 +399,145 @@ MonoBehaviour:
       Data: 
     - Name: Volume
       Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: Julian.Sound.Sound, Assembly-CSharp
+    - Name: Clips
+      Entry: 7
+      Data: 7|UnityEngine.AudioClip[], UnityEngine.AudioModule
+    - Name: 
+      Entry: 12
       Data: 1
+    - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: MixerGroup
+      Entry: 10
+      Data: 1
+    - Name: UsePitchRange
+      Entry: 5
+      Data: false
+    - Name: PitchRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Pitch
+      Entry: 4
+      Data: 1
+    - Name: UseVolumeRange
+      Entry: 5
+      Data: false
+    - Name: VolumeRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Volume
+      Entry: 4
+      Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: Julian.Sound.Sound, Assembly-CSharp
+    - Name: Clips
+      Entry: 7
+      Data: 8|UnityEngine.AudioClip[], UnityEngine.AudioModule
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: MixerGroup
+      Entry: 10
+      Data: 1
+    - Name: UsePitchRange
+      Entry: 5
+      Data: false
+    - Name: PitchRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Pitch
+      Entry: 4
+      Data: 1
+    - Name: UseVolumeRange
+      Entry: 5
+      Data: false
+    - Name: VolumeRange
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Volume
+      Entry: 4
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
