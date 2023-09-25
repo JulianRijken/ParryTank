@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 2884302533439692251}
   _mainCameraTransform: {fileID: 330585546}
-  _levelMoveSpeed: 0.7
+  _levelMoveSpeed: 1
   _roller: {fileID: 1271967365}
   _rollerRotateSpeedMultiplier: -150
 --- !u!4 &144847087
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
 --- !u!114 &203027753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &452693669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _preloadCount: 2
+  _testLevelPart: {fileID: 0}
   _levelPartPrefabs:
   - {fileID: -2517786343927139104, guid: 2d02299c13b4faf4088de94269c13e40, type: 3}
   - {fileID: 5919698647374612260, guid: 6c034f3ab82e3b24ab7efcb679450791, type: 3}
@@ -702,7 +703,7 @@ GameObject:
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &476363818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,10 +717,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _preloadCount: 3
+  _testLevelPart: {fileID: 7695361551524280291, guid: eedbe9853a1c30147937d8a5b7a4dcdf,
+    type: 3}
   _levelPartPrefabs:
   - {fileID: 7695361551524280291, guid: 9a822c446bc3851418655a2622e0a634, type: 3}
   - {fileID: 7695361551524280291, guid: 0505149006f51c344820084469d9ad30, type: 3}
   - {fileID: 7695361551524280291, guid: 6931d0d7883a19b43a3124a79240f29c, type: 3}
+  - {fileID: 7695361551524280291, guid: 81ce51582ac45204a8d25f32a69b16be, type: 3}
+  - {fileID: 7695361551524280291, guid: eedbe9853a1c30147937d8a5b7a4dcdf, type: 3}
   _camera: {fileID: 0}
 --- !u!4 &476363819
 Transform:
@@ -815,7 +820,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2200, y: 1400, z: 1}
+  m_LocalScale: {x: 22000, y: 14000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1010,7 +1015,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrleSmall (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7899303736356205631, guid: b68649f2c4c891f48ad514c6b70473dd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1159,7 +1165,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrleMedium
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6885584014736221504, guid: 01037441a071bb3428bf6dfa79702888, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1365,7 +1372,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrleMedium (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6885584014736221504, guid: 01037441a071bb3428bf6dfa79702888, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1439,7 +1447,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrleMedium (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6885584014736221504, guid: 01037441a071bb3428bf6dfa79702888, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1513,7 +1522,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrleMedium (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6885584014736221504, guid: 01037441a071bb3428bf6dfa79702888, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1629,7 +1639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2137596037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,6 +1653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _preloadCount: 2
+  _testLevelPart: {fileID: 0}
   _levelPartPrefabs:
   - {fileID: -427594007303400943, guid: ac5a28129ebc0a44fadc37510e80aa32, type: 3}
   - {fileID: 4955833262644463679, guid: bdcd889081480dd4e8bc0faf6ff005d2, type: 3}

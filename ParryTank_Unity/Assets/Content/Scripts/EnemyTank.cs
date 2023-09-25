@@ -1,3 +1,5 @@
+using Julian.Sound;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,14 +53,11 @@ public class EnemyTank : BaseTank
 
             float angle = Vector3.Angle(_fireTransform.forward, _aimDirection);
 
+            if (angle <= _minimumAngleForFire && _canFire && _playerInRange)
+            {
+                Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
+            }
 
-
-                if (angle <= _minimumAngleForFire && _canFire && _playerInRange)
-                {
-                    Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
-                }
-
-            
             // else
             // {
             //     float radian = Random.Range(0.0f,Mathf.PI * 2.0f);
@@ -81,8 +80,7 @@ public class EnemyTank : BaseTank
     {
         Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
     }
-    
-    
+
     private IEnumerator FindTargetLoopEnumerator()
     {
         while (true)

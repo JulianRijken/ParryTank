@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6260549714541041714}
   - component: {fileID: 2827576526843657087}
   - component: {fileID: 6953948337769779905}
+  - component: {fileID: 1543193463875571102}
   m_Layer: 0
   m_Name: StretchCube
   m_TagString: Untagged
@@ -103,3 +104,24 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 69d08f64a9ddf0b47ae53d7f0693a77a, type: 2}
   - {fileID: 2100000, guid: 4a23269311252b04b95e04bc011efcf8, type: 2}
   _renderer: {fileID: 2827576526843657087}
+--- !u!65 &1543193463875571102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8853466063778197629}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1, z: 1.5}
+  m_Center: {x: 1, y: 0.5, z: 0.75}

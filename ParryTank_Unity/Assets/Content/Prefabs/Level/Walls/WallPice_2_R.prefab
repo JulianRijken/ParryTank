@@ -123,7 +123,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3602122941317262542, guid: 17fc98335ea408f43af7d2b466ce2d84, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -197,7 +198,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrleMedium (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6885584014736221504, guid: 01037441a071bb3428bf6dfa79702888, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -271,7 +273,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (06)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -345,7 +348,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -419,7 +423,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3602122941317262542, guid: 17fc98335ea408f43af7d2b466ce2d84, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -493,7 +498,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -567,7 +573,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (13)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -641,7 +648,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5902066041854679793, guid: 482800224e1f848498860c94bb2a2710, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -715,7 +723,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (10)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -789,7 +798,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3602122941317262542, guid: 17fc98335ea408f43af7d2b466ce2d84, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -863,7 +873,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -937,7 +948,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (12)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1011,7 +1023,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (11)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1085,7 +1098,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullCube (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7547650369438528612, guid: abed5b939861c93419f3dd71818c7389, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

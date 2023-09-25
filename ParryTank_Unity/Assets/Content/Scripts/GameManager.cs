@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Transform _roller;
     [SerializeField] private float _rollerRotateSpeedMultiplier;
-    
+
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -28,10 +29,6 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-
-     
-        
-        
     }
 
     private void Update()
@@ -42,6 +39,8 @@ public class GameManager : MonoBehaviour
 
         _roller.Rotate(Vector3.forward, Time.deltaTime * _rollerRotateSpeedMultiplier * _levelMoveSpeed);
     }
+
+
 
 
 }

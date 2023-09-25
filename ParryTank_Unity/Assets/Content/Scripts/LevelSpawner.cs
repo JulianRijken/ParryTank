@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class LevelSpawner : MonoBehaviour
 {
     [SerializeField] private int _preloadCount;
+    [SerializeField] private LevelPart _testLevelPart;
     [SerializeField] private LevelPart[] _levelPartPrefabs;
     [SerializeField] private Camera _camera;
 
@@ -62,6 +63,11 @@ public class LevelSpawner : MonoBehaviour
 
 
         LevelPart nextLevelPart = _levelPartPrefabs[Random.Range(0, _levelPartPrefabs.Length)];
+        
+        if (_testLevelPart != null)
+            nextLevelPart = _testLevelPart;
+
+
         spawnPosition -= nextLevelPart.StartPoint;
         
         LevelPart nextLevelPartInstance = Instantiate(nextLevelPart,spawnPosition,Quaternion.identity);

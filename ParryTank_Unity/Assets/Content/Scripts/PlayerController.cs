@@ -1,3 +1,4 @@
+using Julian.Sound;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,11 +22,13 @@ public class PlayerController : BaseTank
     [Header("Effects")]
     [SerializeField] private ParticleSystem _fireParticle;
     [SerializeField] private GameObject _trackDecal;
+    [SerializeField] private GameObject _bombPrefab;
     private float _tankDecalDistanceMoved;
 
     [Header("Transforms")]
     [SerializeField] private Transform _tankBodyTransform;
     [SerializeField] private Transform _tankTrackDecalSpawnTransform;
+    [SerializeField] private Transform _bombSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
 
     private Controls _controls;
@@ -43,6 +46,8 @@ public class PlayerController : BaseTank
         _controls = new Controls();
         _controls.Player.Move.performed += OnMovementInput;
         _controls.Player.Move.canceled += OnMovementInput;
+
+        _controls.Player.PlaceBomb.performed += OnBombInput;
 
         _controls.Player.Attack.performed += OnAttackInput;
     }
@@ -136,8 +141,15 @@ public class PlayerController : BaseTank
         }
     }
 
+    public void OnBombInput(InputAction.CallbackContext context)
+    {
+        Instantiate(_bombPrefab, _bombSpawnTransform.position, _bombSpawnTransform.rotation);
+        AudioManager.PlaySound(SoundType.bombPlanted);
+    }
+
     private void OnMovementInput(InputAction.CallbackContext context)
     {
+
         _movementInput = context.ReadValue<Vector2>();
     }
 }

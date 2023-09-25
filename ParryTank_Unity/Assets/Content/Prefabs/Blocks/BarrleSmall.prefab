@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5733465197583978663}
   - component: {fileID: 2215374988923164694}
   - component: {fileID: 6825530499496562507}
+  - component: {fileID: 7899303736356205631}
   m_Layer: 0
   m_Name: BarrleSmall
   m_TagString: Untagged
@@ -103,3 +104,24 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 69d08f64a9ddf0b47ae53d7f0693a77a, type: 2}
   - {fileID: 2100000, guid: 4a23269311252b04b95e04bc011efcf8, type: 2}
   _renderer: {fileID: 2215374988923164694}
+--- !u!65 &7899303736356205631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7077738741686163306}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 2.0000005, z: 2}
+  m_Center: {x: 0, y: 0.99999994, z: 0}
