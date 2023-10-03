@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class PlayerController : BaseTank
 {
@@ -17,11 +18,10 @@ public class PlayerController : BaseTank
     [SerializeField] private float _trackDecalSpawnInterval;
     [SerializeField] private float _deflectRadius;
     [SerializeField] private Vector2 _speedAxisMultiplier;
-    [SerializeField] private float _trackSoundInterval;
     [SerializeField] protected SoundType _fireSound;
-    private float _trackSoundTimer;
 
-    
+    [SerializeField] private Collider _mainCollider;
+
     [Header("Effects")]
     [SerializeField] private ParticleSystem _fireParticle;
     [SerializeField] private GameObject _trackDecal;
@@ -33,6 +33,7 @@ public class PlayerController : BaseTank
     [SerializeField] private Transform _tankTrackDecalSpawnTransform;
     [SerializeField] private Transform _bombSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
+    [SerializeField] private Transform _meshTransform;
 
     
     private Controls _controls;
@@ -117,6 +118,9 @@ public class PlayerController : BaseTank
     protected override void OnDeath()
     {
         base.OnDeath();
+
+        _meshTransform.gameObject.SetActive(false);
+        _mainCollider.enabled = false;
         _onPlayerDeath?.Invoke();
     }
 

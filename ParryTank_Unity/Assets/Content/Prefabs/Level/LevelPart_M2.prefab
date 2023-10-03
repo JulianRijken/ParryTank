@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPoint: {x: -9, y: 0, z: 0}
   _endPoint: {x: 9, y: 0, z: 0}
+  _drawDebug: 1
 --- !u!1001 &269176313865012749
 PrefabInstance:
   m_ObjectHideFlags: 0

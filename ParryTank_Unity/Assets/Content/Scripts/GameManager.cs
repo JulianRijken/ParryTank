@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -18,11 +19,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Animator _cameraAnimator;
 
+    [SerializeField] private UnityEvent _onGameStartEditorEvent;
 
     public static GameManager Instance { get; private set; }
 
     
-    public static Action _onGameStart;
+    public static event Action _onGameStart;
     
     
     private void Awake()
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
         _playerController.EnableControls(true);
         
         _onGameStart?.Invoke();
+        _onGameStartEditorEvent?.Invoke();
     }
 
 
