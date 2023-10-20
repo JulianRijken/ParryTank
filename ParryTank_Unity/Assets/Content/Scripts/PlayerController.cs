@@ -1,10 +1,7 @@
 using Julian.Sound;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
 
 public class PlayerController : BaseTank
 {
@@ -35,7 +32,7 @@ public class PlayerController : BaseTank
     [SerializeField] private Transform _deflectPoint;
     [SerializeField] private Transform _meshTransform;
 
-    
+
     private Controls _controls;
     private Vector2 _movementInput;
     private Vector2 _velocityPlanar;
@@ -44,6 +41,8 @@ public class PlayerController : BaseTank
     private Quaternion _tankBodyTargetRotation= Quaternion.identity;
 
     public static Action _onPlayerDeath;
+    public static Action _onPlayerMoveRight;
+    public static Action _onPlayerPlaceBomb;
     
     
     private void Awake()
@@ -59,10 +58,24 @@ public class PlayerController : BaseTank
 
         _controls.Player.Attack.performed += OnAttackInput;
     }
-    
+
+    private void OnDestroy()
+    {
+        _controls.Player.Move.performed -= OnMovementInput;
+        _controls.Player.Move.canceled -= OnMovementInput;
+
+        _controls.Player.PlaceBomb.performed -= OnBombInput;
+
+        _controls.Player.Attack.performed -= OnAttackInput;
+    }
+
 
     private void Update()
     {
+        if (_isDead)
+            return;
+
+
         AimTowards(GetMousePos());
        
          
@@ -122,6 +135,7 @@ public class PlayerController : BaseTank
         _meshTransform.gameObject.SetActive(false);
         _mainCollider.enabled = false;
         _onPlayerDeath?.Invoke();
+        EnableControls(false);
     }
 
     public void EnableControls(bool enabled)
@@ -166,11 +180,14 @@ public class PlayerController : BaseTank
     {
         Instantiate(_bombPrefab, _bombSpawnTransform.position, _bombSpawnTransform.rotation);
         AudioManager.PlaySound(SoundType.bombPlanted);
+        _onPlayerPlaceBomb?.Invoke();
     }
 
     private void OnMovementInput(InputAction.CallbackContext context)
     {
-
         _movementInput = context.ReadValue<Vector2>();
+
+        if (_movementInput.x > 0)
+            _onPlayerMoveRight?.Invoke();
     }
 }

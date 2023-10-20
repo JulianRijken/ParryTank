@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Julian.Sound;
 using UnityEngine;
 
@@ -15,17 +13,23 @@ public class BaseTank : MonoBehaviour, IDamageable
     [SerializeField] protected GameObject _deathDecal;
     [SerializeField] protected Transform _deathDecalSpawnTransform;
 
-
+    protected bool _isDead = false;
 
     protected virtual void OnDeath()
     {
         Instantiate(_deathDecal, _deathDecalSpawnTransform.position, _deathDecalSpawnTransform.rotation);
         AudioManager.PlaySound(SoundType.explosion);
+        _isDead = true;
     }
 
     public void OnHealthChange(float delta)
     {
+        if (_tankHealth <= 0)
+            return;
+
         _tankHealth += delta;
+
+        Mathf.Max(0.0f,_tankHealth);
 
         if (_tankHealth <= 0.0f)
             OnDeath();

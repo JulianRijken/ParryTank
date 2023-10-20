@@ -1,8 +1,5 @@
-using Cinemachine;
 using Julian.Sound;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +10,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float _timeToExplode;
     [SerializeField] private float _timeToBlink;
     [SerializeField] private float _radius;
+    [SerializeField] private float _delayBeforeOtherBombExplode;
     [SerializeField] private Vector3 _center;
     [SerializeField] private UnityEvent _event;
 
@@ -64,7 +62,8 @@ public class Bomb : MonoBehaviour
             breakableBlock?.BreakBlock();
 
             Bomb bomb = hitCollider.GetComponent<Bomb>();
-            bomb?.Explode();
+
+            bomb?.Invoke(nameof(bomb.Explode), _delayBeforeOtherBombExplode);
 
             IDamageable damageable = hitCollider.GetComponent<IDamageable>();
             damageable?.OnHealthChange(-100.0f);

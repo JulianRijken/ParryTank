@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,7 +5,7 @@ using Random = UnityEngine.Random;
 public class LevelSpawner : MonoBehaviour
 {
     [SerializeField] private int _preloadCount;
-    [SerializeField] private LevelPart _testLevelPart;
+    [SerializeField] private LevelPart _startPice;
     [SerializeField] private LevelPart[] _levelPartPrefabs;
     [SerializeField] private Camera _camera;
 
@@ -19,6 +17,9 @@ public class LevelSpawner : MonoBehaviour
     {
         if (_camera == null)
             _camera = Camera.main;
+
+        if(_startPice != null)
+        SpawnLevelPart(_startPice);
 
         for (int i = 0; i < _preloadCount; i++)
             SpawnLevelPart();
@@ -48,26 +49,17 @@ public class LevelSpawner : MonoBehaviour
         
     }
 
-    private void SpawnLevelPart()
+    private void SpawnLevelPart(LevelPart forcePart = null)
     {
         Vector3 spawnPosition;
 
-        if (_lastSpawned == null)
-        {
+        if (_lastSpawned == null)    
             spawnPosition = transform.position;
-        }
-        else
-        {
+        else   
             spawnPosition = _lastSpawned.transform.position + _lastSpawned.EndPoint;
-        }
-
-
-        LevelPart nextLevelPart = _levelPartPrefabs[Random.Range(0, _levelPartPrefabs.Length)];
-        
-        if (_testLevelPart != null)
-            nextLevelPart = _testLevelPart;
-
-
+      
+        LevelPart nextLevelPart = forcePart == null ? _levelPartPrefabs[Random.Range(0, _levelPartPrefabs.Length)] : forcePart;
+      
         spawnPosition -= nextLevelPart.StartPoint;
         
         LevelPart nextLevelPartInstance = Instantiate(nextLevelPart,spawnPosition,Quaternion.identity);
