@@ -137,6 +137,7 @@ MonoBehaviour:
   _timeToExplode: 1.5
   _timeToBlink: 2
   _radius: 3
+  _delayBeforeOtherBombExplode: 0.1
   _center: {x: 0, y: 0, z: 0}
   _event:
     m_PersistentCalls:
