@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Animator))]
 public class GameManager : MonoBehaviour
 {
 
@@ -20,7 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator _cameraAnimator;
 
     [SerializeField] private UnityEvent _onGameStartEditorEvent;
+    [SerializeField] private float _deathXViewportPosition;
 
+    
     [InfoBox("Speed based on time")]
     [SerializeField] private AnimationCurve _levelSpeedCurve;
 
@@ -31,7 +34,6 @@ public class GameManager : MonoBehaviour
     private Animator _gameAnimator;
 
     private bool _playerMovedRight;
-    private bool _playerPlacedBomb;
     private float _timePlayed;
 
     public static GameManager Instance { get; private set; }
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
     private GameState _activeGameState = GameState.MainMenu;
 
 
-    private enum GameState
+    public enum GameState
     {
         MainMenu,
         InGame,
@@ -58,10 +60,9 @@ public class GameManager : MonoBehaviour
         
         UIManager._onStartButtonPressed += OnStartButtonPressed;
         UIManager._onQuitButtonPressed += OnQuitButtonPressed;
-        
-        PlayerController._onPlayerDeath += OnPlayerDeath;
+
         PlayerController._onPlayerMoveRight += OnPlayerMoveRight;
-        PlayerController._onPlayerPlaceBomb += OnPlayerPlaceBomb;
+        PlayerController._onPlayerDeath += OnPlayerDeath;
     }
 
     private void OnDestroy()
@@ -69,29 +70,14 @@ public class GameManager : MonoBehaviour
         UIManager._onStartButtonPressed -= OnStartButtonPressed;
         UIManager._onQuitButtonPressed -= OnQuitButtonPressed;
 
-        PlayerController._onPlayerDeath -= OnPlayerDeath;
         PlayerController._onPlayerMoveRight -= OnPlayerMoveRight;
-        PlayerController._onPlayerPlaceBomb -= OnPlayerPlaceBomb;
+        PlayerController._onPlayerDeath -= OnPlayerDeath;
     }
-
-    private void OnPlayerPlaceBomb()
-    {
-        if (_playerPlacedBomb)
-            return;
-
-        _playerPlacedBomb = true;
-
-        _gameAnimator.SetBool("PlayerPlacedBomb", true);
-    }
+    
 
     private void OnPlayerMoveRight()
     {
-        if (_playerMovedRight)
-            return;
-
         _playerMovedRight = true;
-
-        _gameAnimator.SetBool("PlayerMovedRight", true);
     }
 
     private void Start()
@@ -104,12 +90,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if ((_activeGameState == GameState.InGame || _activeGameState == GameState.GameOver) && _playerMovedRight)
+        if (_activeGameState is GameState.InGame or GameState.GameOver && _playerMovedRight)
         {
             _timePlayed += Time.deltaTime;
 
-            Vector2 playerSceenPoint = _mainCamera.WorldToScreenPoint(_playerController.transform.position);
-            if (playerSceenPoint.x < 0)
+            Vector2 playerScreenPoint = _mainCamera.WorldToViewportPoint(_playerController.transform.position);
+            
+            if (playerScreenPoint.x < _deathXViewportPosition)
                 _playerController.OnHealthChange(-100);
 
             float levelMoveSpeed = _levelSpeedCurve.Evaluate(_timePlayed);
@@ -164,7 +151,8 @@ public class GameManager : MonoBehaviour
 
     public static PlayerController Player => Instance._playerController;
 
-
+    public static GameState GetGameState => GameManager.Instance._activeGameState;
+    
     private void StartGame()
     {
         _cameraAnimator.SetBool("InGame", true);
