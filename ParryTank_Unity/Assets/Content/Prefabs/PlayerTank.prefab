@@ -172,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 1203788579892887920}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -0, y: -0.004871574, z: 0.99016744}
+  m_LocalPosition: {x: 0, y: -0.004871574, z: 1.143}
   m_LocalScale: {x: 1.1326, y: 1.1326, z: 1.1326}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5442,7 +5442,7 @@ MonoBehaviour:
   _bodyRotateSpeed: 120
   _aimPlaneHeight: 0.5
   _trackDecalSpawnInterval: 0.31
-  _deflectRadius: 0.85
+  _deflectRadius: 1.1
   _speedAxisMultiplier: {x: 1, y: 1.2}
   _fireSound: 5
   _fireResetSound: 7
