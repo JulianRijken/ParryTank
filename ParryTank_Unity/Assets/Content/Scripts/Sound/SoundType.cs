@@ -9,6 +9,7 @@ namespace Julian.Sound
         bulletExplode,
         fireBulletSoft,
         fireBulletHard,
-        explosion
+        explosion,
+        fireBulletReload
     }
 }

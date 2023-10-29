@@ -1,12 +1,14 @@
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class UIManager : SerializedMonoBehaviour
 {
     [SerializeField] private Transform _crosshair;
+    [SerializeField] private TextMeshProUGUI _highScoreText;
 
     [DictionaryDrawerSettings(ValueLabel = "Screen GameObject", DisplayMode = DictionaryDisplayOptions.Foldout, KeyLabel = "SceenName")]
     [SerializeField] private Dictionary<UIScreens, GameObject> _screens;
@@ -45,6 +47,8 @@ public class UIManager : SerializedMonoBehaviour
 
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+
+        _highScoreText.text = "High Score " + GameManager.Instance.GetHighScore() + "m";
     }
 
     private void OnGameStart()
@@ -57,7 +61,7 @@ public class UIManager : SerializedMonoBehaviour
         SwitchScreen(UIScreens.GameOver);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector3 mousePos = Input.mousePosition;
 

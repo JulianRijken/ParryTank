@@ -16,9 +16,15 @@ public class PlayerController : BaseTank
     [SerializeField] private float _deflectRadius;
     [SerializeField] private Vector2 _speedAxisMultiplier;
     [SerializeField] protected SoundType _fireSound;
+    [SerializeField] protected SoundType _fireResetSound;
 
     [SerializeField] private Collider _mainCollider;
 
+    [SerializeField] private float _fireDelay;
+    private bool _canFire = true;
+    [SerializeField] private float _bombPlaceDelay;
+    private bool _canPlaceBomb = true;
+    
     [Header("Effects")]
     [SerializeField] private ParticleSystem _fireParticle;
     [SerializeField] private GameObject _trackDecal;
@@ -83,6 +89,11 @@ public class PlayerController : BaseTank
         Vector2 targetVelocity = _movementInput.normalized * _speedAxisMultiplier * _moveSpeed;
         float smoothSpeed = (_velocityPlanar.magnitude > targetVelocity.magnitude) ? _decelerationSpeed : _accelerationSpeed;
         _velocityPlanar = Vector2.MoveTowards(_velocityPlanar,targetVelocity,smoothSpeed * Time.deltaTime);
+
+        // Stop player from going out of the screen
+        Vector3 viewportPosition = _mainCamera.WorldToViewportPoint(transform.position);
+        if (viewportPosition.x > 1.0f)
+            _velocityPlanar.x = Mathf.Min(0.0f, _velocityPlanar.x);
         
         // Apply velocity
         Vector3 velocity = new Vector3(_velocityPlanar.x, 0, _velocityPlanar.y);
@@ -163,24 +174,40 @@ public class PlayerController : BaseTank
     
     public void OnAttackInput(InputAction.CallbackContext context)
     {
+        if(!_canFire) 
+            return;
+        
+        _canFire = false;
+            
+        Invoke(nameof(AllowFire),_fireDelay);
+            
         _fireParticle.Play();
         AudioManager.PlaySound(_fireSound);
-        
+            
         var collisions = Physics.OverlapSphere(_deflectPoint.position, _deflectRadius);
         foreach (var collision in collisions)
         {
             Bullet bullet = collision.GetComponent<Bullet>();
-            
+                
             if (bullet)
                 bullet.SetBulletDirection(_tankTopTransform.forward);
         }
+        
     }
 
     public void OnBombInput(InputAction.CallbackContext context)
     {
+        if (!_canPlaceBomb)
+            return;
+        
+        _canPlaceBomb = false;
+
+        Invoke(nameof(AllowBombPlace), _bombPlaceDelay);
+        
         Instantiate(_bombPrefab, _bombSpawnTransform.position, _bombSpawnTransform.rotation);
         AudioManager.PlaySound(SoundType.bombPlanted);
         _onPlayerPlaceBomb?.Invoke();
+        
     }
 
     private void OnMovementInput(InputAction.CallbackContext context)
@@ -189,5 +216,16 @@ public class PlayerController : BaseTank
 
         if (_movementInput.x > 0)
             _onPlayerMoveRight?.Invoke();
+    }
+
+    private void AllowFire()
+    {
+        AudioManager.PlaySound(_fireResetSound);
+        _canFire = true;
+    }
+
+    private void AllowBombPlace()
+    {
+        _canPlaceBomb = true;
     }
 }

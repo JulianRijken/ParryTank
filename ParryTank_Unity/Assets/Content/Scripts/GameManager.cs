@@ -28,11 +28,16 @@ public class GameManager : MonoBehaviour
     [InfoBox("Slow down curve only from 0 - 1")]
     [SerializeField] private AnimationCurve _slowDownCurve;
     [SerializeField] private float _slowDownTime;
+    
+    
+    [SerializeField] private AudioSource _mainMusic;
 
     private Animator _gameAnimator;
 
     private bool _playerMoved;
     private float _timePlayed;
+    
+    private int _highScore;
 
     public static GameManager Instance { get; private set; }
 
@@ -60,6 +65,8 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
+        _highScore = PlayerPrefs.GetInt("HighScore", 0);
+        
         UIManager._onStartButtonPressed += OnStartButtonPressed;
         UIManager._onQuitButtonPressed += OnQuitButtonPressed;
 
@@ -76,25 +83,18 @@ public class GameManager : MonoBehaviour
         PlayerController._onPlayerDeath -= OnPlayerDeath;
     }
     
-
-    public void OnPlayerMove()
-    {
-        _playerMoved = true;
-    }
-
-    private void Start()
-    {
-        Time.timeScale = 1.0f;
-        _playerController.EnableControls(false);
-    }
-
-
-
     private void Update()
     {
         if (_activeGameState is GameState.InGame or GameState.GameOver && _playerMoved)
         {
             _timePlayed += Time.deltaTime;
+
+            int currentScore = Mathf.RoundToInt(_playerController.transform.position.x);
+            if (currentScore > _highScore)
+            {
+                _highScore = currentScore;
+                PlayerPrefs.SetInt("HighScore", _highScore);
+            }
 
             Vector2 playerScreenPoint = _mainCamera.WorldToViewportPoint(_playerController.transform.position);
             
@@ -109,9 +109,20 @@ public class GameManager : MonoBehaviour
 
             _roller.Rotate(Vector3.forward, Time.deltaTime * _rollerRotateSpeedMultiplier * levelMoveSpeed);
         }
-        
-
     }
+
+    public void OnPlayerMove()
+    {
+        _playerMoved = true;
+    }
+
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+        _playerController.EnableControls(false);
+    }
+    
+
 
     private void OnPlayerDeath()
     {
@@ -123,6 +134,8 @@ public class GameManager : MonoBehaviour
     {
         _activeGameState = GameState.GameOver;
 
+        PlayerPrefs.Save();
+        
         _onGameOver?.Invoke();
 
         float alpha = 0f;
@@ -167,10 +180,13 @@ public class GameManager : MonoBehaviour
 
         _playerController.EnableControls(true);
         
+        _mainMusic.Play();
+
         _onGameStart?.Invoke();
     }
 
-
-
-
+    public int GetHighScore()
+    {
+        return _highScore;
+    }
 }
