@@ -63,7 +63,7 @@ MonoBehaviour:
   intensity:
     m_OverrideState: 1
     m_Value: 0.15
---- !u!114 &-4495505416304023623
+--- !u!114 &-6461463845518824929
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,25 +81,25 @@ MonoBehaviour:
     m_Value: 2
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 9.67
+    m_Value: 0.5
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 5.12
+    m_Value: 0
   gaussianMaxRadius:
     m_OverrideState: 1
-    m_Value: 1.044
+    m_Value: 1.042
   highQualitySampling:
     m_OverrideState: 1
     m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 0.35
+    m_Value: 0.345
   aperture:
     m_OverrideState: 1
-    m_Value: 4.6
+    m_Value: 7
   focalLength:
     m_OverrideState: 1
-    m_Value: 70
+    m_Value: 81
   bladeCount:
     m_OverrideState: 0
     m_Value: 5
@@ -130,7 +130,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.204
+    m_Value: 0.242
   smoothness:
     m_OverrideState: 1
     m_Value: 0.691
@@ -147,15 +147,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SampleSceneProfile
+  m_Name: GlobalVolume
   m_EditorClassIdentifier: 
   components:
   - {fileID: 849379129802519247}
   - {fileID: -7893295128165547882}
-  - {fileID: -4495505416304023623}
   - {fileID: -2998788956087170560}
   - {fileID: 9063320587201782885}
   - {fileID: -7118365201375900773}
+  - {fileID: -6461463845518824929}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3

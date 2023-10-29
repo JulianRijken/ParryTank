@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
@@ -18,12 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform _roller;
     [SerializeField] private float _rollerRotateSpeedMultiplier;
 
-    [SerializeField] private Animator _cameraAnimator;
 
-    [SerializeField] private UnityEvent _onGameStartEditorEvent;
     [SerializeField] private float _deathXViewportPosition;
 
-    
     [InfoBox("Speed based on time")]
     [SerializeField] private AnimationCurve _levelSpeedCurve;
 
@@ -33,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private Animator _gameAnimator;
 
-    private bool _playerMovedRight;
+    private bool _playerMoved;
     private float _timePlayed;
 
     public static GameManager Instance { get; private set; }
@@ -44,6 +42,10 @@ public class GameManager : MonoBehaviour
 
     private GameState _activeGameState = GameState.MainMenu;
 
+    public static PlayerController Player => Instance._playerController;
+
+    public static GameState GetGameState => GameManager.Instance._activeGameState;
+    
 
     public enum GameState
     {
@@ -57,11 +59,11 @@ public class GameManager : MonoBehaviour
         _gameAnimator = GetComponent<Animator>();
 
         Instance = this;
-        
+
         UIManager._onStartButtonPressed += OnStartButtonPressed;
         UIManager._onQuitButtonPressed += OnQuitButtonPressed;
 
-        PlayerController._onPlayerMoveRight += OnPlayerMoveRight;
+        PlayerController._onPlayerMoveRight += OnPlayerMove;
         PlayerController._onPlayerDeath += OnPlayerDeath;
     }
 
@@ -70,14 +72,14 @@ public class GameManager : MonoBehaviour
         UIManager._onStartButtonPressed -= OnStartButtonPressed;
         UIManager._onQuitButtonPressed -= OnQuitButtonPressed;
 
-        PlayerController._onPlayerMoveRight -= OnPlayerMoveRight;
+        PlayerController._onPlayerMoveRight -= OnPlayerMove;
         PlayerController._onPlayerDeath -= OnPlayerDeath;
     }
     
 
-    private void OnPlayerMoveRight()
+    public void OnPlayerMove()
     {
-        _playerMovedRight = true;
+        _playerMoved = true;
     }
 
     private void Start()
@@ -90,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_activeGameState is GameState.InGame or GameState.GameOver && _playerMovedRight)
+        if (_activeGameState is GameState.InGame or GameState.GameOver && _playerMoved)
         {
             _timePlayed += Time.deltaTime;
 
@@ -107,6 +109,8 @@ public class GameManager : MonoBehaviour
 
             _roller.Rotate(Vector3.forward, Time.deltaTime * _rollerRotateSpeedMultiplier * levelMoveSpeed);
         }
+        
+
     }
 
     private void OnPlayerDeath()
@@ -149,13 +153,11 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
-    public static PlayerController Player => Instance._playerController;
 
-    public static GameState GetGameState => GameManager.Instance._activeGameState;
     
     private void StartGame()
     {
-        _cameraAnimator.SetBool("InGame", true);
+        _gameAnimator.SetBool("InGame", true);
        
         Cursor.visible = false;
 
@@ -166,7 +168,6 @@ public class GameManager : MonoBehaviour
         _playerController.EnableControls(true);
         
         _onGameStart?.Invoke();
-        _onGameStartEditorEvent?.Invoke();
     }
 
 

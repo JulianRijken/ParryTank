@@ -9,7 +9,8 @@ public class GameHint : MonoBehaviour
     [SerializeField] private InputActionReference _inputAction;
 
     private Animator _animator;
-    
+    [SerializeField] private UnityEvent _onHintTriggered;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -32,6 +33,7 @@ public class GameHint : MonoBehaviour
         if(GameManager.GetGameState != GameManager.GameState.InGame)
             return;
         
+        _onHintTriggered?.Invoke();
         _animator.SetTrigger("Trigger");
     }
 }
