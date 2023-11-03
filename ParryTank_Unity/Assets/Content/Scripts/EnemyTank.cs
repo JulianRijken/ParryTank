@@ -21,7 +21,7 @@ public class EnemyTank : BaseTank
         public float distance;
         public Vector3 direction;
         
-        public CheckResult(bool hasHit = false, float distance = 0, Vector3 direction = new Vector3())
+        public CheckResult(bool hasHit = false, float distance = 0, Vector3 direction = new())
         {
             this.hasHit = hasHit;
             this.distance = distance;
@@ -33,10 +33,14 @@ public class EnemyTank : BaseTank
     {
         StartCoroutine(FireLoop());
         StartCoroutine(FindTargetLoopEnumerator());
+        
+        DistanceBar.Instance.AddEnemy(this);
     }
 
     protected override void OnDeath()
     {
+        DistanceBar.Instance.AddX(transform.position.x);
+
         base.OnDeath();
         Destroy(gameObject);
     }

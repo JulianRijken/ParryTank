@@ -7,7 +7,7 @@ public class PlayerController : BaseTank
 {
     
     [Header("Settings")]
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _maxMoveSpeed;
     [SerializeField] private float _accelerationSpeed;
     [SerializeField] private float _decelerationSpeed;
     [SerializeField] private float _bodyRotateSpeed;
@@ -19,6 +19,7 @@ public class PlayerController : BaseTank
     [SerializeField] protected SoundType _fireResetSound;
 
     [SerializeField] private Collider _mainCollider;
+    [SerializeField] private GameObject _crosshairTrail;
 
     [SerializeField] private float _fireDelay;
     private bool _canFire = true;
@@ -29,6 +30,7 @@ public class PlayerController : BaseTank
     [SerializeField] private ParticleSystem _fireParticle;
     [SerializeField] private GameObject _trackDecal;
     [SerializeField] private GameObject _bombPrefab;
+    [SerializeField] private GameObject _deathEffectPrefab;
     private float _tankDecalDistanceMoved;
 
     [Header("Transforms")]
@@ -46,6 +48,8 @@ public class PlayerController : BaseTank
     private Camera _mainCamera;
     private Quaternion _tankBodyTargetRotation= Quaternion.identity;
 
+    public float MaxSpeed => _maxMoveSpeed;
+    
     public static Action _onPlayerDeath;
     public static Action _onPlayerMoveRight;
     public static Action _onPlayerPlaceBomb;
@@ -56,6 +60,8 @@ public class PlayerController : BaseTank
         _rigidbody = GetComponent<Rigidbody>();
         _mainCamera = Camera.main;
         
+        _crosshairTrail.SetActive(false);
+        
         _controls = new Controls();
         _controls.Player.Move.performed += OnMovementInput;
         _controls.Player.Move.canceled += OnMovementInput;
@@ -63,7 +69,12 @@ public class PlayerController : BaseTank
         _controls.Player.PlaceBomb.performed += OnBombInput;
 
         _controls.Player.Attack.performed += OnAttackInput;
+        
+        GameManager._onGameStart += OnGameStart;
+
     }
+
+
 
     private void OnDestroy()
     {
@@ -73,6 +84,8 @@ public class PlayerController : BaseTank
         _controls.Player.PlaceBomb.performed -= OnBombInput;
 
         _controls.Player.Attack.performed -= OnAttackInput;
+        
+        GameManager._onGameStart -= OnGameStart;
     }
 
 
@@ -81,12 +94,15 @@ public class PlayerController : BaseTank
         if (_isDead)
             return;
 
-
+        Vector3 target = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        _crosshairTrail.transform.position = target + _mainCamera.transform.forward * 1.0f;
+        
+        
         AimTowards(GetMousePos());
        
          
         // Handle velocity
-        Vector2 targetVelocity = _movementInput.normalized * _speedAxisMultiplier * _moveSpeed;
+        Vector2 targetVelocity = _movementInput.normalized * _speedAxisMultiplier * _maxMoveSpeed;
         float smoothSpeed = (_velocityPlanar.magnitude > targetVelocity.magnitude) ? _decelerationSpeed : _accelerationSpeed;
         _velocityPlanar = Vector2.MoveTowards(_velocityPlanar,targetVelocity,smoothSpeed * Time.deltaTime);
 
@@ -143,10 +159,16 @@ public class PlayerController : BaseTank
     {
         base.OnDeath();
 
+        Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
         _meshTransform.gameObject.SetActive(false);
         _mainCollider.enabled = false;
         _onPlayerDeath?.Invoke();
         EnableControls(false);
+    }
+    
+    private void OnGameStart()
+    {
+        _crosshairTrail.SetActive(true);
     }
 
     public void EnableControls(bool enabled)

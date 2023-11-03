@@ -9,10 +9,14 @@ public class DistanceBarItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _distanceText;
     [SerializeField] private float _lerpSpeed;
     [SerializeField] private bool _destroyOutOfScreen;
+    [SerializeField] private Image _icon;
 
-    private float targetPositionX;
+    private float _targetPositionX;
+    private bool _targetTransformSet = false;
+    private Transform _targetTransform;
     private Camera _mainCamera;
     private Animator _animator;
+
 
     private void Start()
     {
@@ -22,13 +26,18 @@ public class DistanceBarItem : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_targetTransform != null)
+            _followWorldPositonX = _targetTransform.position.x;
+        else if(_targetTransformSet)
+            Destroy(gameObject);
+        
         _distanceText.text = Mathf.RoundToInt(_followWorldPositonX) + "m";
 
         Vector3 screenPoint = _mainCamera.WorldToScreenPoint(new Vector3(_followWorldPositonX,0));
-        targetPositionX = screenPoint.x;
+        _targetPositionX = screenPoint.x;
         
         // Lerp to target position
-        float newPositionX = Mathf.Lerp(transform.position.x, targetPositionX, Time.deltaTime * _lerpSpeed);
+        float newPositionX = Mathf.Lerp(transform.position.x, _targetPositionX, Time.deltaTime * _lerpSpeed);
         transform.position = new Vector3(newPositionX, transform.position.y);
         
         Vector3 viewPortPoint = _mainCamera.WorldToViewportPoint(new Vector3(_followWorldPositonX,0));
@@ -43,5 +52,17 @@ public class DistanceBarItem : MonoBehaviour
     public void SetFollowPositionX(float newPositionX)
     {
         _followWorldPositonX = newPositionX;
+    }
+
+    public void SetTargetTransform(Transform targetTransform)
+    {
+        _targetTransform = targetTransform;
+        _targetTransformSet = true;
+    }
+
+    public void SetIconColor(Color color)
+    {
+        if(_icon != null)
+            _icon.color = color;
     }
 }

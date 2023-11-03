@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     [InfoBox("Speed based on time")]
     [SerializeField] private AnimationCurve _levelSpeedCurve;
 
+    [InfoBox("Added speed based on screen position, This value is the lerp between the level speed and the max player speed")]
+    [SerializeField] private AnimationCurve _levelSpeedAdditionCurve;
+    
     [InfoBox("Slow down curve only from 0 - 1")]
     [SerializeField] private AnimationCurve _slowDownCurve;
     [SerializeField] private float _slowDownTime;
@@ -96,13 +99,14 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("HighScore", _highScore);
             }
 
-            Vector2 playerScreenPoint = _mainCamera.WorldToViewportPoint(_playerController.transform.position);
+            Vector2 playerViewportPoint = _mainCamera.WorldToViewportPoint(_playerController.transform.position);
             
-            if (playerScreenPoint.x < _deathXViewportPosition)
+            if (playerViewportPoint.x < _deathXViewportPosition)
                 _playerController.OnHealthChange(-100);
 
-            float levelMoveSpeed = _levelSpeedCurve.Evaluate(_timePlayed);
+            float levelMoveSpeed = Mathf.Lerp(_levelSpeedCurve.Evaluate(_timePlayed),_playerController.MaxSpeed,_levelSpeedAdditionCurve.Evaluate(playerViewportPoint.x));
 
+            
             Vector3 cameraPosition = _topDownCamera.transform.position;
             cameraPosition.x += levelMoveSpeed * Time.deltaTime;
             _topDownCamera.transform.position = cameraPosition;
@@ -120,6 +124,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         _playerController.EnableControls(false);
+        
+        DistanceBar.Instance.AddXPlayer(_highScore);
     }
     
 
