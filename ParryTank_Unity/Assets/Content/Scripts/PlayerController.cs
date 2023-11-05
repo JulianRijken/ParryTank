@@ -48,6 +48,8 @@ public class PlayerController : BaseTank
     private Camera _mainCamera;
     private Quaternion _tankBodyTargetRotation= Quaternion.identity;
 
+    private bool _compleatedFireTutorial = false;
+
     public float MaxSpeed => _maxMoveSpeed;
     
     public static Action _onPlayerDeath;
@@ -71,7 +73,6 @@ public class PlayerController : BaseTank
         _controls.Player.Attack.performed += OnAttackInput;
         
         GameManager._onGameStart += OnGameStart;
-
     }
 
 
@@ -144,6 +145,18 @@ public class PlayerController : BaseTank
             
             AudioManager.PlaySound(SoundType.track);
         }
+
+        if (!_compleatedFireTutorial)
+        {
+            var collisions = Physics.OverlapSphere(_deflectPoint.position, _deflectRadius);
+            foreach (var collision in collisions)
+            {
+                Bullet bullet = collision.GetComponent<Bullet>();
+
+                if (bullet)
+                    Time.timeScale = 0.1f;
+            }
+        }
     }
 
 #if UNITY_EDITOR
@@ -210,11 +223,18 @@ public class PlayerController : BaseTank
         foreach (var collision in collisions)
         {
             Bullet bullet = collision.GetComponent<Bullet>();
-                
+
             if (bullet)
+            {
                 bullet.SetBulletDirection(_tankTopTransform.forward);
+
+                if (!_compleatedFireTutorial)
+                {
+                    Time.timeScale = 1.0f;
+                    _compleatedFireTutorial = true;
+                }
+            }
         }
-        
     }
 
     public void OnBombInput(InputAction.CallbackContext context)

@@ -53,7 +53,14 @@ public class GameManager : MonoBehaviour
     public static PlayerController Player => Instance._playerController;
 
     public static GameState GetGameState => GameManager.Instance._activeGameState;
-    
+
+
+    public static bool IsPointOnScreen(Vector3 point)
+    {
+        Vector2 viewportPoint = Instance._mainCamera.WorldToViewportPoint(point);
+        return (viewportPoint.x is >= 0.0f and <= 1.0f && viewportPoint.y is >= 0.0f and <= 1.0f);
+    }
+
 
     public enum GameState
     {

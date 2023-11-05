@@ -57,12 +57,6 @@ public class EnemyTank : BaseTank
             {
                 Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
             }
-
-            // else
-            // {
-            //     float radian = Random.Range(0.0f,Mathf.PI * 2.0f);
-            //     _aimDirection = new Vector3(Mathf.Cos(radian), 0.0f,Mathf.Sin(radian));
-            // }
         }
     }
     

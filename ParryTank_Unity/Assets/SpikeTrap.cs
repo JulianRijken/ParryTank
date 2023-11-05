@@ -52,7 +52,9 @@ public class SpikeTrap : MonoBehaviour
             damageable?.OnHealthChange(-100.0f);
         }
         
-        AudioManager.PlaySound(SoundType.bombPlanted,0.8f);
+        // Only play when on screen 
+        if(GameManager.IsPointOnScreen(transform.position))
+            AudioManager.PlaySound(SoundType.spikeTrapAttack,0.8f);
     }
     #if UNITY_EDITOR
     private void OnDrawGizmos()

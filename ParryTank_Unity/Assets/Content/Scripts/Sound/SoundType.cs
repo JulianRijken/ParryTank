@@ -10,6 +10,7 @@ namespace Julian.Sound
         fireBulletSoft,
         fireBulletHard,
         explosion,
-        fireBulletReload
+        fireBulletReload,
+        spikeTrapAttack
     }
 }
