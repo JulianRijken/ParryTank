@@ -309,7 +309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4798580444742377872
 Transform:
   m_ObjectHideFlags: 0
@@ -318,13 +318,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6878510204481132374}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: -0.018074045, y: 0.7068747, z: 0.018074097, w: 0.7068768}
   m_LocalPosition: {x: -0, y: 0, z: 0.312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6811713353735035213}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.929, y: 90, z: 0}
 --- !u!33 &7423289766364474599
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -353,7 +353,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c974d52a592b93446b7232d47c77c93e, type: 2}
+  - {fileID: 2100000, guid: 12bd1b9fe69b5f54183595a5336d7eee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -438,7 +438,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c974d52a592b93446b7232d47c77c93e, type: 2}
+  - {fileID: 2100000, guid: 12bd1b9fe69b5f54183595a5336d7eee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -524,7 +524,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c974d52a592b93446b7232d47c77c93e, type: 2}
+  - {fileID: 2100000, guid: 12bd1b9fe69b5f54183595a5336d7eee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -558,8 +558,9 @@ GameObject:
   - component: {fileID: 5702202083785887220}
   - component: {fileID: 4360735533769265198}
   - component: {fileID: 7325193185999807999}
+  - component: {fileID: 168807290117678534}
   m_Layer: 7
-  m_Name: EnemyTank_Basic
+  m_Name: EnemyTank_Bomb
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,8 +647,7 @@ MonoBehaviour:
   _igunoreLayers:
     serializedVersion: 2
     m_Bits: 256
-  _bulletPrefab: {fileID: 1588683786637055818, guid: beee38615a6c4634db9ece3a280aee00,
-    type: 3}
+  _bulletPrefab: {fileID: 0}
   _bodyTransform: {fileID: 7084527675922480612}
   _bodyRotateSpeed: 0.5
   _fireTransform: {fileID: 617685159455904518}
@@ -656,3 +656,25 @@ MonoBehaviour:
   _minimumAngleForFire: 10
   _minimumDistanceForFire: 15
   _fireDelayRange: {x: 1, y: 2}
+--- !u!195 &168807290117678534
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477222863797755523}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 1.5
+  m_Acceleration: 2
+  avoidancePriority: 50
+  m_AngularSpeed: 1000
+  m_StoppingDistance: 2.4
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: -0.1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

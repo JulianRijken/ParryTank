@@ -2,7 +2,9 @@ using Cinemachine;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Transform _roller;
     [SerializeField] private float _rollerRotateSpeedMultiplier;
+    [SerializeField] private NavMeshSurface _navMeshSurface;
 
 
     [SerializeField] private float _deathXViewportPosition;
@@ -95,6 +98,10 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+        // Yes yes performance bla bla, NO! It's not a game for release and it would be pre mature!
+        _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
+
+        
         if (_activeGameState is GameState.InGame or GameState.GameOver && _playerMoved)
         {
             _timePlayed += Time.deltaTime;
@@ -119,6 +126,9 @@ public class GameManager : MonoBehaviour
             _topDownCamera.transform.position = cameraPosition;
 
             _roller.Rotate(Vector3.forward, Time.deltaTime * _rollerRotateSpeedMultiplier * levelMoveSpeed);
+            
+            _navMeshSurface.center =
+                new Vector3(_topDownCamera.transform.position.x, _navMeshSurface.center.y, _navMeshSurface.center.z);
         }
     }
 

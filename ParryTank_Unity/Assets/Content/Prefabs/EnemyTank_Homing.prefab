@@ -353,7 +353,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c974d52a592b93446b7232d47c77c93e, type: 2}
+  - {fileID: 2100000, guid: b8f0fab21b1c89542a2ea26b0e3ae67f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -648,7 +648,10 @@ MonoBehaviour:
     m_Bits: 256
   _bulletPrefab: {fileID: 1588683786637055818, guid: b430874e80074ec46a55da02626c5b3b,
     type: 3}
+  _bodyTransform: {fileID: 7084527675922480612}
+  _bodyRotateSpeed: 0.5
   _fireTransform: {fileID: 617685159455904518}
+  _extraFireTransforms: []
   _aimBounceChecks: 1
   _minimumAngleForFire: 35
   _minimumDistanceForFire: 15
