@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9154146112582659777}
   - component: {fileID: 604438229645063351}
   m_Layer: 8
-  m_Name: Bullet
+  m_Name: Bullet_Homing
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,11 +74,13 @@ MonoBehaviour:
   _rotateSpeed: 1500
   _maxBounces: 2
   _damage: 100
-  _maxLifeTime: 4
+  _maxLifeTime: 3
   _hitWallParticle: {fileID: 503861036384543719, guid: c84fe863f960167458c0e2c40093d699,
     type: 3}
   _destroyPartice: {fileID: 2321629161008104686, guid: baa2bd5a06304fc4d8fd11599ea9fd42,
     type: 3}
+  _target: {fileID: 0}
+  _homingRotateSpeed: 3
 --- !u!54 &9154146112582659777
 Rigidbody:
   m_ObjectHideFlags: 0

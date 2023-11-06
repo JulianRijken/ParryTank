@@ -5,11 +5,12 @@ using Random = UnityEngine.Random;
 public class EnemyTank : BaseTank
 {
     [SerializeField] private LayerMask _igunoreLayers;
-    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _fireTransform;
     [SerializeField] private int _aimBounceChecks;
     [SerializeField] private float _minimumAngleForFire;
     [SerializeField] private float _minimumDistanceForFire;
+    [SerializeField] private Vector2 _fireDelayRange;
 
     private Vector3 _aimDirection = Vector3.zero;
     private bool _canFire = false;
@@ -49,13 +50,15 @@ public class EnemyTank : BaseTank
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(1.0f,2.0f));
+            yield return new WaitForSeconds(Random.Range(_fireDelayRange.x, _fireDelayRange.y));
 
             float angle = Vector3.Angle(_fireTransform.forward, _aimDirection);
 
             if (angle <= _minimumAngleForFire && _canFire && _playerInRange)
             {
-                Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
+                Bullet spawnedBullet = Instantiate(_bulletPrefab, _fireTransform.position, _fireTransform.rotation);
+                if(spawnedBullet)
+                    spawnedBullet.SetTarget(GameManager.Player.transform);
             }
         }
     }

@@ -48,7 +48,7 @@ public class PlayerController : BaseTank
     private Camera _mainCamera;
     private Quaternion _tankBodyTargetRotation= Quaternion.identity;
 
-    private bool _compleatedFireTutorial = false;
+    private bool _compleatedFireTutorial = true;
 
     public float MaxSpeed => _maxMoveSpeed;
     

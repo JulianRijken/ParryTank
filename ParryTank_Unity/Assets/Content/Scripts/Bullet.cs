@@ -12,6 +12,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject _hitWallParticle;
     [SerializeField] private GameObject _destroyPartice;
 
+    [Tooltip("Optional for homing bullets")]
+    [SerializeField] private Transform _target;
+    [SerializeField] private float _homingRotateSpeed;
+
     private Rigidbody _rigidbody;
     private Vector2 _planerVelocity;
     private int _timesBounced;
@@ -32,10 +36,24 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        _rigidbody.velocity = new Vector3(_planerVelocity.x,0,_planerVelocity.y) * _flySpeed;
+        if (_target)
+        {
+            Vector3 targetDirection = (_target.position - transform.position).normalized;
+            Vector3 currentVelocityDirection = new Vector3(_planerVelocity.x, 0, _planerVelocity.y).normalized;
+
+
+            Vector3 newVelocityDirection = Vector3.RotateTowards(currentVelocityDirection, targetDirection, _homingRotateSpeed * Time.deltaTime, 0);
+
+            // Update the planar velocity based on the new direction
+            _planerVelocity.x = newVelocityDirection.x;
+            _planerVelocity.y = newVelocityDirection.z;
+        }
+
+        // Apply velocity
+        _rigidbody.velocity = new Vector3(_planerVelocity.x, 0, _planerVelocity.y) * _flySpeed;
+
+        // Rotate to velocity
         Quaternion targetRotation = Quaternion.LookRotation(new Vector3(_planerVelocity.x, 0, _planerVelocity.y));
-        // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotateSpeed);
-        // transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * _rotateSpeed);
         transform.rotation = targetRotation;
     }
     
@@ -46,7 +64,6 @@ public class Bullet : MonoBehaviour
             DestroyBullet();
             return;
         }
-        
         
         var damageableInterface = collision.gameObject.GetComponent<IDamageable>();
         if (damageableInterface != null)
@@ -84,5 +101,10 @@ public class Bullet : MonoBehaviour
     {
         Vector2 planarDirection = new Vector2(direction.normalized.x, direction.normalized.z);
         _planerVelocity = planarDirection;
+    }
+
+    public void SetTarget(Transform target)
+    {
+        _target = target;
     }
 }

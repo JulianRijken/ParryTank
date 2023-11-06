@@ -438,7 +438,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c974d52a592b93446b7232d47c77c93e, type: 2}
+  - {fileID: 2100000, guid: b8f0fab21b1c89542a2ea26b0e3ae67f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -524,7 +524,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c974d52a592b93446b7232d47c77c93e, type: 2}
+  - {fileID: 2100000, guid: b8f0fab21b1c89542a2ea26b0e3ae67f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 4360735533769265198}
   - component: {fileID: 7325193185999807999}
   m_Layer: 7
-  m_Name: EnemyTank
+  m_Name: EnemyTank_Homing
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,9 +646,10 @@ MonoBehaviour:
   _igunoreLayers:
     serializedVersion: 2
     m_Bits: 256
-  _bulletPrefab: {fileID: 5014655209594051723, guid: beee38615a6c4634db9ece3a280aee00,
+  _bulletPrefab: {fileID: 1588683786637055818, guid: b430874e80074ec46a55da02626c5b3b,
     type: 3}
   _fireTransform: {fileID: 617685159455904518}
-  _aimBounceChecks: 3
-  _minimumAngleForFire: 10
+  _aimBounceChecks: 1
+  _minimumAngleForFire: 35
   _minimumDistanceForFire: 15
+  _fireDelayRange: {x: 3, y: 4}
