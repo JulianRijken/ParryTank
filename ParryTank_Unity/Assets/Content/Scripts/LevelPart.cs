@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class LevelPart : MonoBehaviour
 {
     [SerializeField] private Vector3 _startPoint;
     [SerializeField] private Vector3 _endPoint;
+    [SerializeField] private bool _addNavMeshCollider;
 
 #if UNITY_EDITOR
     [SerializeField] private bool _drawDebug = false;
@@ -11,6 +13,19 @@ public class LevelPart : MonoBehaviour
 
     public Vector3 StartPoint => _startPoint;
     public Vector3 EndPoint => _endPoint;
+
+    private void Start()
+    {
+        if (_addNavMeshCollider)
+        {
+            BoxCollider groundCollider = gameObject.AddComponent<BoxCollider>();
+            groundCollider.gameObject.layer = 9; // 9 should be obstacle
+            Vector3 center = Vector3.Lerp(_startPoint, _endPoint, 0.5f);
+            center.y = -0.5f;
+            groundCollider.center = center;
+            groundCollider.size = new Vector3(Mathf.Abs(_startPoint.x) + Mathf.Abs(_endPoint.x), 1, 17.0f);
+        }
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

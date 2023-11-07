@@ -10259,37 +10259,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b13fa2df2504546ae8751182692c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tankTopTransform: {fileID: 5534445742045282314}
-  _barrleRotateSpeed: 10
-  _slerpSmoothing: 1
-  _tankHealth: 100
+  _topRotateSpeed: 10
+  _bodyRotateSpeed: 120
+  _topRotateType: 0
   _deathDecal: {fileID: 4459042517343489435, guid: 6c99933e10893524c8d3571900eb8ca7,
     type: 3}
-  _deathDecalSpawnTransform: {fileID: 7934395160928542664}
-  _maxMoveSpeed: 10
+  _deathParticle: {fileID: 3469092644371752419}
+  _health: 100
+  _topTransform: {fileID: 5534445742045282314}
+  _bodyTransform: {fileID: 182249283096238397}
+  _meshTransform: {fileID: 8770446225207166325}
+  _maxMoveSpeed: 3
   _accelerationSpeed: 55
   _decelerationSpeed: 30
-  _bodyRotateSpeed: 120
   _aimPlaneHeight: 0.5
   _trackDecalSpawnInterval: 0.31
   _deflectRadius: 1
+  _fireDelay: 0.3
+  _bombPlaceDelay: 1
   _speedAxisMultiplier: {x: 1, y: 1.2}
   _fireSound: 5
   _fireResetSound: 7
-  _mainCollider: {fileID: 7283433874086185563}
+  _tankCollider: {fileID: 7283433874086185563}
   _crosshairTrail: {fileID: 2715103948784328623}
-  _fireDelay: 0.85
-  _bombPlaceDelay: 1
-  _fireParticle: {fileID: 3951171432915339199}
-  _trackDecal: {fileID: 4459042517343489435, guid: 4704eea71407fca45a63ba77aedff6da,
-    type: 3}
   _bombPrefab: {fileID: 6267946931767906515, guid: 85236fd9db0cf984e87227b2d60f3184,
     type: 3}
-  _tankBodyTransform: {fileID: 182249283096238397}
+  _deathEffectPrefab: {fileID: 2321629161008104686, guid: baa2bd5a06304fc4d8fd11599ea9fd42,
+    type: 3}
+  _trackDecal: {fileID: 4459042517343489435, guid: 4704eea71407fca45a63ba77aedff6da,
+    type: 3}
+  _fireParticle: {fileID: 3951171432915339199}
   _tankTrackDecalSpawnTransform: {fileID: 754346814346864329}
   _bombSpawnTransform: {fileID: 5580223078193963213}
   _deflectPoint: {fileID: 5337497984436827608}
-  _meshTransform: {fileID: 8770446225207166325}
 --- !u!135 &7283433874086185563
 SphereCollider:
   m_ObjectHideFlags: 0

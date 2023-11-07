@@ -1,28 +1,22 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class EnemyTank : BaseTank
+public class StationaryEnemyTank : BaseTank
 {
-    [SerializeField] private LayerMask _igunoreLayers;
-    [SerializeField] private Bullet _bulletPrefab;
-    [SerializeField] private Transform _bodyTransform;
-    [SerializeField] private float _bodyRotateSpeed;
-    [SerializeField] private Transform _fireTransform;
-    [SerializeField] private Transform[] _extraFireTransforms;
+    [Header("Stationary tank settings")]
     [SerializeField] private int _aimBounceChecks;
     [SerializeField] private float _minimumAngleForFire;
     [SerializeField] private float _minimumDistanceForFire;
+    [SerializeField] private Bullet _bulletPrefab;
+    [SerializeField] private Transform _fireTransform;
+    [SerializeField] private Transform[] _extraFireTransforms;
     [SerializeField] private Vector2 _fireDelayRange;
+    [SerializeField] private LayerMask _ignoreLayers;
 
-    private Vector3 _aimDirection = Vector3.zero;
-    private bool _canFire = false;
-    private bool _placedBomb = false;
+    private bool _canFire;
     private bool _playerInRange;
-    private NavMeshAgent _navMeshAgent;
-    private Vector3 startPosition;
+    private Vector3 _aimDirection = Vector3.zero;
 
     struct CheckResult
     {
@@ -37,14 +31,7 @@ public class EnemyTank : BaseTank
             this.direction = direction;
         }
     }
-
-    private void Awake()
-    {
-        startPosition = transform.position;
-        
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-    }
-
+    
     private void Start()
     {
         if (_bulletPrefab)
@@ -53,12 +40,11 @@ public class EnemyTank : BaseTank
             StartCoroutine(FindTargetLoopEnumerator());
         }
 
-        if(!_navMeshAgent)
-            StartCoroutine(MoveLoop());
-        
-        DistanceBar.Instance.AddEnemy(this);
+        DistanceBar.Instance.AddEnemy(transform);
+
+        _bodyTransform.rotation = Quaternion.AngleAxis(Random.value * 360.0f, Vector3.up);
+        _topTransform.rotation = Quaternion.AngleAxis(Random.value * 360.0f, Vector3.up);
     }
-    
     private void Update()
     {
         _aimDirection.y = 0.0f;
@@ -67,31 +53,16 @@ public class EnemyTank : BaseTank
             AimTowardsDirection(_aimDirection);
 
         _playerInRange = (Vector3.Distance(transform.position, GameManager.Player.transform.position) < _minimumDistanceForFire);
-
-        if (_navMeshAgent)
-        {
-            if (!_placedBomb)
-            {
-                _navMeshAgent.SetDestination(GameManager.Player.transform.position);
-                if (_navMeshAgent.hasPath && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
-                {
-                    _navMeshAgent.SetDestination(startPosition);
-                    _placedBomb = true;
-                }
-            }
-
-        }
     }
 
     
     protected override void OnDeath()
     {
-        DistanceBar.Instance.AddX(transform.position.x);
-
         base.OnDeath();
+        
+        DistanceBar.Instance.AddX(transform.position.x);
         Destroy(gameObject);
     }
-
     
     
     private IEnumerator FireLoop()
@@ -111,29 +82,6 @@ public class EnemyTank : BaseTank
             }
         }
     }
-
-    private IEnumerator MoveLoop()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(1, 3));
-
-            Quaternion targetRotation = _bodyTransform.rotation;
-            targetRotation *= Quaternion.Euler(0, Random.Range(-45.0f,45.0f), 0);
-
-            float alpha = 0.0f;
-            while (alpha < 1.0f)
-            {
-                yield return new WaitForEndOfFrame();
-                alpha += Time.deltaTime * _bodyRotateSpeed;
-                alpha = Mathf.Min(alpha,1.0f);
-                
-                _bodyTransform.rotation = Quaternion.Slerp(_bodyTransform.rotation, targetRotation, alpha);
-            }
-        }
-    }
-
-    
     private IEnumerator FindTargetLoopEnumerator()
     {
         while (true)
@@ -172,16 +120,17 @@ public class EnemyTank : BaseTank
         }
     }
     
+    
     private CheckResult CheckHit(Vector3 direction, int rayBounces)
     {
         CheckResult checkResult = new CheckResult(false,0.0f,direction);
         
-        Vector3 fromPoint = _tankTopTransform.position;
+        Vector3 fromPoint = _topTransform.position;
         Vector3 rayDirection = direction;
         
         for (int bounceIndex = 0; bounceIndex < rayBounces; bounceIndex++)
         {
-            Physics.Raycast(fromPoint, rayDirection,out var hit,Mathf.Infinity,~_igunoreLayers);
+            Physics.Raycast(fromPoint, rayDirection,out var hit,Mathf.Infinity,~_ignoreLayers);
             
             if (hit.collider is null)
                 return checkResult;
@@ -213,12 +162,21 @@ public class EnemyTank : BaseTank
 
         return checkResult;
     }
-
+    
     void FireBullet(Transform fireTransform)
     {
         Bullet spawnedBullet = Instantiate(_bulletPrefab, fireTransform.position, fireTransform.rotation);
         if(spawnedBullet)
             spawnedBullet.SetTarget(GameManager.Player.transform);
     }
+    
+    
+    #if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 1, 1, 0.1f);
+        Gizmos.DrawWireSphere(transform.position,_minimumDistanceForFire);
+    }
+#endif
     
 }

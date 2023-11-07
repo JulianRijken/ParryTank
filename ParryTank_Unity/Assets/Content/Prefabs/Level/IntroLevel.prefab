@@ -1150,6 +1150,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
+      propertyPath: _topRotateSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
+        type: 3}
       propertyPath: _aimBounceChecks
       value: 1
       objectReference: {fileID: 0}
@@ -1166,12 +1171,12 @@ PrefabInstance:
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _minimumAngleForFire
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _minimumDistanceForFire
-      value: 100
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8477222863797755523, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}

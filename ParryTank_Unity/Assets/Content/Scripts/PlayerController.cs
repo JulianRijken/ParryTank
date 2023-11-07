@@ -5,57 +5,49 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : BaseTank
 {
-    
-    [Header("Settings")]
+    [Header("Player tank settings")]
     [SerializeField] private float _maxMoveSpeed;
     [SerializeField] private float _accelerationSpeed;
     [SerializeField] private float _decelerationSpeed;
-    [SerializeField] private float _bodyRotateSpeed;
     [SerializeField] private float _aimPlaneHeight;
     [SerializeField] private float _trackDecalSpawnInterval;
     [SerializeField] private float _deflectRadius;
+    [SerializeField] private float _fireDelay;
+    [SerializeField] private float _bombPlaceDelay;
     [SerializeField] private Vector2 _speedAxisMultiplier;
     [SerializeField] protected SoundType _fireSound;
     [SerializeField] protected SoundType _fireResetSound;
 
-    [SerializeField] private Collider _mainCollider;
+    [SerializeField] private Collider _tankCollider;
     [SerializeField] private GameObject _crosshairTrail;
 
-    [SerializeField] private float _fireDelay;
-    private bool _canFire = true;
-    [SerializeField] private float _bombPlaceDelay;
-    private bool _canPlaceBomb = true;
-    
-    [Header("Effects")]
-    [SerializeField] private ParticleSystem _fireParticle;
-    [SerializeField] private GameObject _trackDecal;
+
     [SerializeField] private GameObject _bombPrefab;
     [SerializeField] private GameObject _deathEffectPrefab;
-    private float _tankDecalDistanceMoved;
+    [SerializeField] private GameObject _trackDecal;
 
-    [Header("Transforms")]
-    [SerializeField] private Transform _tankBodyTransform;
+    [SerializeField] private ParticleSystem _fireParticle;
+    
     [SerializeField] private Transform _tankTrackDecalSpawnTransform;
     [SerializeField] private Transform _bombSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
-    [SerializeField] private Transform _meshTransform;
 
-
-    private Controls _controls;
+    private bool _canFire = true;
+    private bool _canPlaceBomb = true;
+    private float _tankDecalDistanceMoved;
+    private bool _completedFireTutorial = false;
     private Vector2 _movementInput;
     private Vector2 _velocityPlanar;
-    private Rigidbody _rigidbody;
-    private Camera _mainCamera;
     private Quaternion _tankBodyTargetRotation= Quaternion.identity;
 
-    private bool _compleatedFireTutorial = true;
-
+    private Camera _mainCamera;
+    private Controls _controls;
+    private Rigidbody _rigidbody;
     public float MaxSpeed => _maxMoveSpeed;
     
-    public static Action _onPlayerDeath;
-    public static Action _onPlayerMoveRight;
-    public static Action _onPlayerPlaceBomb;
-    
+    public static Action OnPlayerDeath;
+    public static Action OnPlayerMoveRight;
+    public static Action OnPlayerPlaceBomb;
     
     private void Awake()
     {
@@ -67,9 +59,7 @@ public class PlayerController : BaseTank
         _controls = new Controls();
         _controls.Player.Move.performed += OnMovementInput;
         _controls.Player.Move.canceled += OnMovementInput;
-
         _controls.Player.PlaceBomb.performed += OnBombInput;
-
         _controls.Player.Attack.performed += OnAttackInput;
         
         GameManager._onGameStart += OnGameStart;
@@ -81,9 +71,7 @@ public class PlayerController : BaseTank
     {
         _controls.Player.Move.performed -= OnMovementInput;
         _controls.Player.Move.canceled -= OnMovementInput;
-
         _controls.Player.PlaceBomb.performed -= OnBombInput;
-
         _controls.Player.Attack.performed -= OnAttackInput;
         
         GameManager._onGameStart -= OnGameStart;
@@ -117,8 +105,6 @@ public class PlayerController : BaseTank
         _rigidbody.velocity = velocity;
 
 
-
-
         // Handle body rotation
         if (velocity.magnitude > 0)
         {
@@ -130,12 +116,9 @@ public class PlayerController : BaseTank
                 _tankBodyTargetRotation = tankBodyVelocityRotation;
             }
         }
-        
-        
-        _tankBodyTransform.rotation = Quaternion.RotateTowards(_tankBodyTransform.rotation, _tankBodyTargetRotation, Time.deltaTime * _bodyRotateSpeed * _velocityPlanar.magnitude);
-        // _tankBodyTransform.rotation = Quaternion.RotateTowards(_tankBodyTransform.rotation, _tankBodyTargetRotation, Time.deltaTime * _bodyRotateSpeed);
 
-
+        _bodyTransform.rotation = Quaternion.RotateTowards(_bodyTransform.rotation, _tankBodyTargetRotation, Time.deltaTime * _bodyRotateSpeed * _velocityPlanar.magnitude);
+        
         _tankDecalDistanceMoved += _velocityPlanar.magnitude * Time.deltaTime;
 
         if (_tankDecalDistanceMoved > _trackDecalSpawnInterval)
@@ -146,7 +129,7 @@ public class PlayerController : BaseTank
             AudioManager.PlaySound(SoundType.track);
         }
 
-        if (!_compleatedFireTutorial)
+        if (!_completedFireTutorial)
         {
             var collisions = Physics.OverlapSphere(_deflectPoint.position, _deflectRadius);
             foreach (var collision in collisions)
@@ -174,8 +157,8 @@ public class PlayerController : BaseTank
 
         Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
         _meshTransform.gameObject.SetActive(false);
-        _mainCollider.enabled = false;
-        _onPlayerDeath?.Invoke();
+        _tankCollider.enabled = false;
+        OnPlayerDeath?.Invoke();
         EnableControls(false);
     }
     
@@ -190,6 +173,11 @@ public class PlayerController : BaseTank
             _controls.Enable();
         else
             _controls.Disable();
+    }
+
+    public void SetTutorialCompleted()
+    {
+        _completedFireTutorial = true;
     }
     
     private Vector3 GetMousePos()
@@ -226,12 +214,12 @@ public class PlayerController : BaseTank
 
             if (bullet)
             {
-                bullet.SetBulletDirection(_tankTopTransform.forward);
+                bullet.SetBulletDirection(_topTransform.forward);
 
-                if (!_compleatedFireTutorial)
+                if (!_completedFireTutorial)
                 {
                     Time.timeScale = 1.0f;
-                    _compleatedFireTutorial = true;
+                    _completedFireTutorial = true;
                 }
             }
         }
@@ -247,9 +235,7 @@ public class PlayerController : BaseTank
         Invoke(nameof(AllowBombPlace), _bombPlaceDelay);
         
         Instantiate(_bombPrefab, _bombSpawnTransform.position, _bombSpawnTransform.rotation);
-        AudioManager.PlaySound(SoundType.bombPlanted);
-        _onPlayerPlaceBomb?.Invoke();
-        
+        OnPlayerPlaceBomb?.Invoke();
     }
 
     private void OnMovementInput(InputAction.CallbackContext context)
@@ -257,7 +243,7 @@ public class PlayerController : BaseTank
         _movementInput = context.ReadValue<Vector2>();
 
         if (_movementInput.x > 0)
-            _onPlayerMoveRight?.Invoke();
+            OnPlayerMoveRight?.Invoke();
     }
 
     private void AllowFire()

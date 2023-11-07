@@ -37,6 +37,8 @@ public class Bomb : MonoBehaviour
 
     private IEnumerator ExplodeCourutine()
     {
+        AudioManager.PlaySound(SoundType.bombPlanted);
+
         _animator.SetInteger("State", (int)BombState.Idle);
 
         yield return new WaitForSeconds(_timeToBlink);

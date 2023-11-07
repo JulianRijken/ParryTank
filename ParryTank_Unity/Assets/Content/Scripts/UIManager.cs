@@ -16,8 +16,9 @@ public class UIManager : SerializedMonoBehaviour
 
     private Animator _uiAnimator;
 
-    public static Action _onStartButtonPressed;
-    public static Action _onQuitButtonPressed;
+    public static Action OnStartButtonPressed;
+    public static Action OnTutorialButtonPressed;
+    public static Action OnQuitButtonPressed;
 
 
     private enum UIScreens
@@ -81,11 +82,16 @@ public class UIManager : SerializedMonoBehaviour
 
     public void PressStartButton()
     {
-        _onStartButtonPressed?.Invoke();
+        OnStartButtonPressed?.Invoke();
     }
     
     public void PressQuitButton()
     {
-        _onQuitButtonPressed?.Invoke();
+        OnQuitButtonPressed?.Invoke();
+    }
+    
+    public void PressTutorialButton()
+    {
+        OnTutorialButtonPressed?.Invoke();
     }
 }

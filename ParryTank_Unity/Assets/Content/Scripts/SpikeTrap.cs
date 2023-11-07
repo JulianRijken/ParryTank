@@ -49,7 +49,7 @@ public class SpikeTrap : MonoBehaviour
         foreach (Collider hitCollider in hitColliders) 
         {
             IDamageable damageable = hitCollider.GetComponent<IDamageable>();
-            damageable?.OnHealthChange(-100.0f);
+            damageable?.OnHealthChange(-float.MaxValue);
         }
         
         // Only play when on screen 

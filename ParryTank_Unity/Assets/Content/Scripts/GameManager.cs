@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform _roller;
     [SerializeField] private float _rollerRotateSpeedMultiplier;
     [SerializeField] private NavMeshSurface _navMeshSurface;
-
+    [SerializeField] private LevelSpawner _levelSpawner;
+    [SerializeField] private LevelPart _defaultStartPiece;
+    [SerializeField] private LevelPart _tutorialStartPiece;
+    
 
     [SerializeField] private float _deathXViewportPosition;
 
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
     private GameState _activeGameState = GameState.MainMenu;
 
     public static PlayerController Player => Instance._playerController;
+    public static NavMeshSurface NavMeshSurface => Instance._navMeshSurface;
 
     public static GameState GetGameState => GameManager.Instance._activeGameState;
 
@@ -80,28 +84,26 @@ public class GameManager : MonoBehaviour
 
         _highScore = PlayerPrefs.GetInt("HighScore", 0);
         
-        UIManager._onStartButtonPressed += OnStartButtonPressed;
-        UIManager._onQuitButtonPressed += OnQuitButtonPressed;
+        UIManager.OnStartButtonPressed += OnStartButtonPressed;
+        UIManager.OnTutorialButtonPressed += OnTutorialButtonPressed;
+        UIManager.OnQuitButtonPressed += OnQuitButtonPressed;
 
-        PlayerController._onPlayerMoveRight += OnPlayerMove;
-        PlayerController._onPlayerDeath += OnPlayerDeath;
+        PlayerController.OnPlayerMoveRight += OnPlayerMove;
+        PlayerController.OnPlayerDeath += OnPlayerDeath;
     }
-
+    
     private void OnDestroy()
     {
-        UIManager._onStartButtonPressed -= OnStartButtonPressed;
-        UIManager._onQuitButtonPressed -= OnQuitButtonPressed;
+        UIManager.OnStartButtonPressed -= OnStartButtonPressed;
+        UIManager.OnTutorialButtonPressed -= OnTutorialButtonPressed;
+        UIManager.OnQuitButtonPressed -= OnQuitButtonPressed;
 
-        PlayerController._onPlayerMoveRight -= OnPlayerMove;
-        PlayerController._onPlayerDeath -= OnPlayerDeath;
+        PlayerController.OnPlayerMoveRight -= OnPlayerMove;
+        PlayerController.OnPlayerDeath -= OnPlayerDeath;
     }
     
     private void Update()
     {
-        // Yes yes performance bla bla, NO! It's not a game for release and it would be pre mature!
-        _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
-
-        
         if (_activeGameState is GameState.InGame or GameState.GameOver && _playerMoved)
         {
             _timePlayed += Time.deltaTime;
@@ -143,6 +145,8 @@ public class GameManager : MonoBehaviour
         _playerController.EnableControls(false);
         
         DistanceBar.Instance.AddXPlayer(_highScore);
+
+        StartCoroutine(SlowUpdateNavMesh());
     }
     
 
@@ -186,23 +190,29 @@ public class GameManager : MonoBehaviour
 
     private void OnStartButtonPressed()
     {
-        StartGame();
+        StartGame(false);
+    }
+
+    private void OnTutorialButtonPressed()
+    {
+        StartGame(true);
     }
 
 
     
-    private void StartGame()
+    private void StartGame(bool tutorial)
     {
-        _gameAnimator.SetBool("InGame", true);
-       
-        Cursor.visible = false;
+        if(!tutorial)
+            _playerController.SetTutorialCompleted();
 
-        _timePlayed = 0;
-
-        _activeGameState = GameState.InGame;
-
-        _playerController.EnableControls(true);
+        _levelSpawner.SetStartPiece(tutorial ? _tutorialStartPiece : _defaultStartPiece);
+        _levelSpawner.enabled = true;
         
+        _gameAnimator.SetBool("InGame", true);
+        Cursor.visible = false;
+        _timePlayed = 0;
+        _activeGameState = GameState.InGame;
+        _playerController.EnableControls(true);
         _mainMusic.Play();
 
         _onGameStart?.Invoke();
@@ -211,5 +221,25 @@ public class GameManager : MonoBehaviour
     public int GetHighScore()
     {
         return _highScore;
+    }
+
+    private IEnumerator SlowUpdateNavMesh()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+            UpdateNavMesh();
+        }
+    }
+    
+    public static void UpdateNavMeshStatic()
+    {
+        Instance.UpdateNavMesh();
+    }
+    
+    public void UpdateNavMesh()
+    {
+        // Yes yes performance bla bla, NO! It's not a game for release and it would be pre mature!
+        _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
     }
 }

@@ -138,14 +138,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4100992526205106331}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4799412629858321073}
   - {fileID: 5900714429994873605}
-  m_Father: {fileID: 520813320244152993}
+  m_Father: {fileID: 8208750417766430414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4594841789234430398
 GameObject:
@@ -375,6 +375,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7008805698987921068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8208750417766430414}
+  m_Layer: 7
+  m_Name: Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8208750417766430414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7008805698987921068}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6811713353735035213}
+  - {fileID: 7084527675922480612}
+  m_Father: {fileID: 520813320244152993}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7663388758740219004
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,15 +519,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910357382026357076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.015318, y: 0.52, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.015317917, y: 0.52, z: 0}
   m_LocalScale: {x: 1.2961718, y: 1.2961718, z: 1.2961718}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2437950236277900650}
   - {fileID: 4798580444742377872}
   - {fileID: 617685159455904518}
-  m_Father: {fileID: 520813320244152993}
+  m_Father: {fileID: 8208750417766430414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6727061129132334018
 MeshFilter:
@@ -556,7 +589,6 @@ GameObject:
   m_Component:
   - component: {fileID: 520813320244152993}
   - component: {fileID: 5702202083785887220}
-  - component: {fileID: 4360735533769265198}
   - component: {fileID: 7325193185999807999}
   m_Layer: 7
   m_Name: EnemyTank_Basic
@@ -578,8 +610,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6811713353735035213}
-  - {fileID: 7084527675922480612}
+  - {fileID: 8208750417766430414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!65 &5702202083785887220
@@ -603,27 +634,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.86, y: 0.65, z: 0.96}
   m_Center: {x: 0, y: 0.325, z: 0}
---- !u!135 &4360735533769265198
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8477222863797755523}
-  m_Material: {fileID: 13400000, guid: 10c624164bf92484cbc5ed4b8290f087, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.44
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &7325193185999807999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,23 +646,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fec87659366814b97687025c000b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tankTopTransform: {fileID: 6811713353735035213}
-  _barrleRotateSpeed: 60
-  _slerpSmoothing: 0
-  _tankHealth: 100
+  _topRotateSpeed: 30
+  _bodyRotateSpeed: 0.5
+  _topRotateType: 1
   _deathDecal: {fileID: 4459042517343489435, guid: 6c99933e10893524c8d3571900eb8ca7,
     type: 3}
-  _deathDecalSpawnTransform: {fileID: 4799412629858321073}
-  _igunoreLayers:
-    serializedVersion: 2
-    m_Bits: 256
+  _deathParticle: {fileID: 2321629161008104686, guid: baa2bd5a06304fc4d8fd11599ea9fd42,
+    type: 3}
+  _health: 100
+  _topTransform: {fileID: 6811713353735035213}
+  _bodyTransform: {fileID: 7084527675922480612}
+  _meshTransform: {fileID: 8208750417766430414}
+  _aimBounceChecks: 2
+  _minimumAngleForFire: 30
+  _minimumDistanceForFire: 15
   _bulletPrefab: {fileID: 1588683786637055818, guid: beee38615a6c4634db9ece3a280aee00,
     type: 3}
-  _bodyTransform: {fileID: 7084527675922480612}
-  _bodyRotateSpeed: 0.5
   _fireTransform: {fileID: 617685159455904518}
   _extraFireTransforms: []
-  _aimBounceChecks: 3
-  _minimumAngleForFire: 10
-  _minimumDistanceForFire: 15
-  _fireDelayRange: {x: 1, y: 2}
+  _fireDelayRange: {x: 2, y: 3}
+  _ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 256

@@ -54,14 +54,14 @@ public class DistanceBar : MonoBehaviour
         }
     }
 
-    public void AddEnemy(EnemyTank enemyTank)
+    public void AddEnemy(Transform enemyTank)
     {
         DistanceBarItem newBarItem = Instantiate(_distanceItemEnemyPrefab,_distanceItemEnemyPrefab.transform.parent);
         newBarItem.transform.position =
             new Vector3(newBarItem.transform.position.x, _distanceItemScene1Prefab.transform.parent.transform.position.y);
 
 
-        newBarItem.SetTargetTransform(enemyTank.transform);
+        newBarItem.SetTargetTransform(enemyTank);
         newBarItem.gameObject.SetActive(true);
     }
     
