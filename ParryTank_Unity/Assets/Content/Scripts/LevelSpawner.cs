@@ -71,8 +71,5 @@ public class LevelSpawner : MonoBehaviour
         LevelPart nextLevelPartInstance = Instantiate(nextLevelPart,spawnPosition,Quaternion.identity);
         _lastSpawned = nextLevelPartInstance;
         _activeLevelParts.Enqueue(_lastSpawned);
-        
-        if(_updateNavMesh)
-            GameManager.UpdateNavMeshStatic();
     }
 }

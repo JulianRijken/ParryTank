@@ -29,7 +29,7 @@ public class BombEnemyTank : BaseTank
         
         if (_navMeshAgent.hasPath)
         {
-            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            if (_navMeshAgent.remainingDistance <= 1.0f)
             {
                 SetNextDestination();
                 PlaceBomb();

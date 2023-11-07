@@ -749,7 +749,6 @@ MonoBehaviour:
   _mainCamera: {fileID: 330585545}
   _roller: {fileID: 1271967365}
   _rollerRotateSpeedMultiplier: -150
-  _navMeshSurface: {fileID: 566027909}
   _levelSpawner: {fileID: 476363818}
   _defaultStartPiece: {fileID: 7695361551524280291, guid: 3d4084fb275d0ce43b52ecd94fa5d43b,
     type: 3}
@@ -1843,7 +1842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320528613}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WorldPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3734,69 +3733,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564331373}
   m_CullTransparentMesh: 1
---- !u!1 &566027907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 566027908}
-  - component: {fileID: 566027909}
-  m_Layer: 0
-  m_Name: NavMeshVolume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &566027908
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566027907}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &566027909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566027907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 1
-  m_Size: {x: 300, y: 1, z: 17}
-  m_Center: {x: 0, y: 0.5, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  m_UseGeometry: 1
-  m_DefaultArea: 0
-  m_GenerateLinks: 1
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: d7f745fe5d7afea438f50097ffe04c5d, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1001 &578151713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12680,7 +12616,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 330585546}
   - {fileID: 144847087}
-  - {fileID: 566027908}
   - {fileID: 1782101959}
   - {fileID: 1175158299}
   - {fileID: 410087041}
