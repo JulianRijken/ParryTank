@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fec87659366814b97687025c000b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topRotateSpeed: 30
+  _topRotateSpeed: 60
   _bodyRotateSpeed: 0.5
   _topRotateType: 1
   _deathDecal: {fileID: 4459042517343489435, guid: 6c99933e10893524c8d3571900eb8ca7,
@@ -658,13 +658,13 @@ MonoBehaviour:
   _bodyTransform: {fileID: 7084527675922480612}
   _meshTransform: {fileID: 8208750417766430414}
   _aimBounceChecks: 2
-  _minimumAngleForFire: 30
+  _minimumAngleForFire: 10
   _minimumDistanceForFire: 15
   _bulletPrefab: {fileID: 1588683786637055818, guid: beee38615a6c4634db9ece3a280aee00,
     type: 3}
   _fireTransform: {fileID: 617685159455904518}
   _extraFireTransforms: []
-  _fireDelayRange: {x: 2, y: 3}
+  _fireDelayRange: {x: 1, y: 2}
   _ignoreLayers:
     serializedVersion: 2
     m_Bits: 256
