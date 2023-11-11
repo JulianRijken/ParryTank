@@ -2,13 +2,11 @@ using Cinemachine;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
-using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
+
+[DefaultExecutionOrder(-1)]
 [RequireComponent(typeof(Animator))]
 public class GameManager : MonoBehaviour
 {
@@ -52,6 +50,7 @@ public class GameManager : MonoBehaviour
     private float _timePlayed;
     
     private int _highScore;
+    private int _lastScore;
 
     public static GameManager Instance { get; private set; }
 
@@ -60,7 +59,7 @@ public class GameManager : MonoBehaviour
     public static event Action _onGameOver;
 
     private GameState _activeGameState = GameState.MainMenu;
-
+    
     public static PlayerController Player => Instance._playerController;
 
     public static GameState GetGameState => Instance._activeGameState;
@@ -89,7 +88,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         _highScore = PlayerPrefs.GetInt("HighScore", 0);
-        
+
         UIManager.OnStartButtonPressed += OnStartButtonPressed;
         UIManager.OnTutorialButtonPressed += OnTutorialButtonPressed;
         UIManager.OnQuitButtonPressed += OnQuitButtonPressed;
@@ -125,6 +124,10 @@ public class GameManager : MonoBehaviour
                 _highScore = currentScore;
                 PlayerPrefs.SetInt("HighScore", _highScore);
             }
+            
+            // Can also be done on player death but this is easier :)
+            // Stop optimizing pre maturely!
+            PlayerPrefs.SetInt("LastScore", currentScore);
 
             Vector2 playerViewportPoint = _mainCamera.WorldToViewportPoint(_playerController.transform.position);
             
@@ -160,7 +163,6 @@ public class GameManager : MonoBehaviour
         if (_startGameImmediately)
             StartGame(false);
         #endif
-        
     }
     
 
@@ -235,6 +237,9 @@ public class GameManager : MonoBehaviour
             _mainMusic.Play();
 
         _onGameStart?.Invoke();
+        
+        if(!PlayerPrefs.HasKey("LastScore"))
+            PlayerPrefs.SetInt("LastScore", 0);
     }
 
     public int GetHighScore()

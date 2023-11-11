@@ -21,6 +21,12 @@ public class DistanceBar : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         // Only one will ever be in the level
         Instance = this;
     }
@@ -59,8 +65,7 @@ public class DistanceBar : MonoBehaviour
         DistanceBarItem newBarItem = Instantiate(_distanceItemEnemyPrefab,_distanceItemEnemyPrefab.transform.parent);
         newBarItem.transform.position =
             new Vector3(newBarItem.transform.position.x, _distanceItemScene1Prefab.transform.parent.transform.position.y);
-
-
+        
         newBarItem.SetTargetTransform(enemyTank);
         newBarItem.gameObject.SetActive(true);
     }

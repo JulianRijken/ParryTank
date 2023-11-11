@@ -72,18 +72,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 5.049446
       value: 0.99971116
-      inSlope: 0.003010709
-      outSlope: 0.003010709
-      tangentMode: 0
+      inSlope: 0.002431209
+      outSlope: 0.0025217035
+      tangentMode: 65
       weightedMode: 1
       inWeight: 0.88692963
-      outWeight: 0.07716846
+      outWeight: 0.07406598
     - serializedVersion: 3
       time: 600
       value: 2.5
-      inSlope: 0.0027424914
+      inSlope: 0.0025217035
       outSlope: 0.0027424914
-      tangentMode: 0
+      tangentMode: 5
       weightedMode: 0
       inWeight: 0.06899372
       outWeight: 0
@@ -140,6 +140,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   _slowDownTime: 4
   _mainMusic: {fileID: 0}
+  _startGameImmediately: 0
+  _staticLevel: 0
 --- !u!95 &7794658348888996538
 Animator:
   serializedVersion: 5

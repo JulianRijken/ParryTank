@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Roller : MonoBehaviour
@@ -14,12 +11,6 @@ public class Roller : MonoBehaviour
         {
             IDamageable damageable = collider.GetComponent<IDamageable>();
             damageable?.OnHealthChange(-float.MaxValue);
-            
-           //Block block = collider.GetComponent<Block>();
-           //if (block)
-           //{
-           //    Destroy(block.gameObject);
-           //}
         }
     }
 }

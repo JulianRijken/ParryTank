@@ -8,6 +8,7 @@ public class StationaryEnemyTank : BaseTank
     [SerializeField] private int _aimBounceChecks;
     [SerializeField] private float _minimumAngleForFire;
     [SerializeField] private float _minimumDistanceForFire;
+    [SerializeField] private float _maximumDistanceForFire;
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _fireTransform;
     [SerializeField] private Transform[] _extraFireTransforms;
@@ -79,7 +80,8 @@ public class StationaryEnemyTank : BaseTank
 
     private bool IsTargetInRange()
     {
-        return Vector3.Distance(transform.position, _targetTransform.position) < _minimumDistanceForFire;
+        float distance = Vector3.Distance(transform.position, _targetTransform.position);
+        return (distance < _maximumDistanceForFire && distance > _minimumDistanceForFire);
     }
 
     private Vector3 GetTargetDirection()
@@ -243,6 +245,7 @@ public class StationaryEnemyTank : BaseTank
     {
         Gizmos.color = new Color(1, 1, 1, 0.1f);
         Gizmos.DrawWireSphere(transform.position,_minimumDistanceForFire);
+        Gizmos.DrawWireSphere(transform.position,_maximumDistanceForFire);
     }
 #endif
     

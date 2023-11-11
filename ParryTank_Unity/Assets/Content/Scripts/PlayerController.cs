@@ -1,6 +1,5 @@
 using Julian.Sound;
 using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -91,18 +90,27 @@ public class PlayerController : BaseTank
     }
 
 
+    /// <summary>
+    /// Player update is split up in to regions
+    /// This is done instead of splitting the update up in to separate functions
+    /// Ideally this would be more of a player component system were for example moving is a component
+    /// This is not done as this is a simple prototype project
+    /// </summary>
     private void Update()
     {
         if (_isDead)
             return;
 
+        #region Handle Aiming and crosshar trail
+        
         Vector3 target = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         _crosshairTrail.transform.position = target + _mainCamera.transform.forward * 1.0f;
         
-        
-        AimTowards(GetMousePos());
-       
-         
+        AimTowards(GetMouseWorldPosition());
+        #endregion
+
+        #region Handle planar body movement
+
         // Handle velocity
         Vector2 targetVelocity = _movementInput.normalized * _speedAxisMultiplier * _maxMoveSpeed;
         float smoothSpeed = (_velocityPlanar.magnitude > targetVelocity.magnitude) ? _decelerationSpeed : _accelerationSpeed;
@@ -117,8 +125,10 @@ public class PlayerController : BaseTank
         Vector3 velocity = new Vector3(_velocityPlanar.x, 0, _velocityPlanar.y);
         _rigidbody.velocity = velocity;
 
-
-        // Handle body rotation
+        #endregion
+        
+        #region Handle body rotation
+        
         if (velocity.magnitude > 0)
         {
             Quaternion tankBodyVelocityRotation = Quaternion.LookRotation(velocity, Vector3.up);
@@ -129,11 +139,13 @@ public class PlayerController : BaseTank
                 _tankBodyTargetRotation = tankBodyVelocityRotation;
             }
         }
-
         _bodyTransform.rotation = Quaternion.RotateTowards(_bodyTransform.rotation, _tankBodyTargetRotation, Time.deltaTime * _bodyRotateSpeed * _velocityPlanar.magnitude);
         
-        _tankDecalDistanceMoved += _velocityPlanar.magnitude * Time.deltaTime;
+        #endregion
 
+        #region Handle tank track spawning
+        
+        _tankDecalDistanceMoved += _velocityPlanar.magnitude * Time.deltaTime;
         if (_tankDecalDistanceMoved > _trackDecalSpawnInterval)
         {
             Instantiate(_trackDecal, _tankTrackDecalSpawnTransform.position, _tankTrackDecalSpawnTransform.rotation);
@@ -142,6 +154,10 @@ public class PlayerController : BaseTank
             AudioManager.PlaySound(SoundType.track);
         }
 
+        #endregion
+        
+        #region Handle tutorial
+        
         if (!_completedFireTutorial)
         {
             var collisions = Physics.OverlapSphere(_deflectPoint.position, _deflectRadius);
@@ -153,29 +169,25 @@ public class PlayerController : BaseTank
                     Time.timeScale = 0.1f;
             }
         }
+        
+        #endregion
     }
 
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(GetMousePos(),0.2f);
-        
-        Gizmos.DrawWireSphere(_deflectPoint.position,_deflectRadius);
-    }
-#endif
 
     protected override void OnDeath()
     {
-        if (!_invincibility)
-        {
-            base.OnDeath();
+        #if UNITY_EDITOR
+        if (_invincibility)
+            return;
+        #endif
+        
+        base.OnDeath();
 
-            Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
-            _meshTransform.gameObject.SetActive(false);
-            _tankCollider.enabled = false;
-            OnPlayerDeath?.Invoke();
-            EnableControls(false);
-        }
+        Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
+        _meshTransform.gameObject.SetActive(false);
+        _tankCollider.enabled = false;
+        OnPlayerDeath?.Invoke();
+        EnableControls(false);
     }
     
     private void OnGameStart()
@@ -196,7 +208,7 @@ public class PlayerController : BaseTank
         _completedFireTutorial = true;
     }
     
-    private Vector3 GetMousePos()
+    private Vector3 GetMouseWorldPosition()
     {
         if (_mainCamera)
         {
@@ -272,4 +284,14 @@ public class PlayerController : BaseTank
     {
         _canPlaceBomb = true;
     }
+    
+    
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(GetMouseWorldPosition(),0.2f);
+        
+        Gizmos.DrawWireSphere(_deflectPoint.position,_deflectRadius);
+    }
+#endif
 }

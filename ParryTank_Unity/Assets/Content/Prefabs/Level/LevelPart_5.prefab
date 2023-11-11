@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4697639085835389228}
   - component: {fileID: 1848446205652593187}
   m_Layer: 9
-  m_Name: GameObject
+  m_Name: NavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8372762195821176510}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a07201288ed12f942bee6ca2fada05ac, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c43e59f057830bc4ba59d4a78775ba53, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &110805798583657053
 PrefabInstance:

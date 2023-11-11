@@ -9,6 +9,7 @@ public class UIManager : SerializedMonoBehaviour
 {
     [SerializeField] private Transform _crosshair;
     [SerializeField] private TextMeshProUGUI _highScoreText;
+    [SerializeField] private TextMeshProUGUI _lastScoreText;
 
     [DictionaryDrawerSettings(ValueLabel = "Screen GameObject", DisplayMode = DictionaryDisplayOptions.Foldout, KeyLabel = "SceenName")]
     [SerializeField] private Dictionary<UIScreens, GameObject> _screens;
@@ -19,8 +20,7 @@ public class UIManager : SerializedMonoBehaviour
     public static Action OnStartButtonPressed;
     public static Action OnTutorialButtonPressed;
     public static Action OnQuitButtonPressed;
-
-
+    
     private enum UIScreens
     {
         MainMenu,
@@ -50,6 +50,9 @@ public class UIManager : SerializedMonoBehaviour
         Cursor.visible = true;
 
         _highScoreText.text = "High Score " + GameManager.Instance.GetHighScore() + "m";
+        
+        // Using player prefs as a bandage solution, I would rather do this with some don't destroy on load thing 
+        _lastScoreText.text = "Last Score " + (PlayerPrefs.HasKey("LastScore") ? PlayerPrefs.GetInt("LastScore") : 0) + "m";
     }
 
     private void OnGameStart()

@@ -659,7 +659,8 @@ MonoBehaviour:
   _meshTransform: {fileID: 8208750417766430414}
   _aimBounceChecks: 2
   _minimumAngleForFire: 5
-  _minimumDistanceForFire: 13
+  _minimumDistanceForFire: 1.5
+  _maximumDistanceForFire: 13
   _bulletPrefab: {fileID: 1588683786637055818, guid: beee38615a6c4634db9ece3a280aee00,
     type: 3}
   _fireTransform: {fileID: 617685159455904518}

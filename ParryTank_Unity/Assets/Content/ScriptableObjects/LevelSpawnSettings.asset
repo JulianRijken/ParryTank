@@ -24,10 +24,10 @@ MonoBehaviour:
     SpawnAfterMinutes: 0
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 48419ec9577da6140b311f01a3f8166e,
       type: 3}
-    SpawnAfterMinutes: 0
+    SpawnAfterMinutes: 0.5
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 50260b718cf2fcf40a53af6cbd26de62,
       type: 3}
-    SpawnAfterMinutes: 0
+    SpawnAfterMinutes: 0.7
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 81ce51582ac45204a8d25f32a69b16be,
       type: 3}
     SpawnAfterMinutes: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
     SpawnAfterMinutes: 0
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: ec387b843727690429b8497c9329364e,
       type: 3}
-    SpawnAfterMinutes: 0
+    SpawnAfterMinutes: 0.5
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 109a444c99a51c74181a6d0e9aab8dd5,
       type: 3}
     SpawnAfterMinutes: 0

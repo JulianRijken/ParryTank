@@ -21,7 +21,6 @@ public class Bullet : MonoBehaviour
     private int _timesBounced;
     
     
-    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -40,8 +39,6 @@ public class Bullet : MonoBehaviour
         {
             Vector3 targetDirection = (_target.position - transform.position).normalized;
             Vector3 currentVelocityDirection = new Vector3(_planerVelocity.x, 0, _planerVelocity.y).normalized;
-
-
             Vector3 newVelocityDirection = Vector3.RotateTowards(currentVelocityDirection, targetDirection, _homingRotateSpeed * Time.deltaTime, 0);
 
             // Update the planar velocity based on the new direction
@@ -50,6 +47,7 @@ public class Bullet : MonoBehaviour
         }
 
         // Apply velocity
+        // Not done in fixed update, not needed as the rigidbody still handles the physics in the fixed time step
         _rigidbody.velocity = new Vector3(_planerVelocity.x, 0, _planerVelocity.y) * _flySpeed;
 
         // Rotate to velocity

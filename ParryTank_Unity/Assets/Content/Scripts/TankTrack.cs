@@ -14,6 +14,4 @@ public class TankTrack : MonoBehaviour
         if( _decalProjector.fadeFactor <= 0.0f)
             Destroy(gameObject);
     }
-    
-    
 }

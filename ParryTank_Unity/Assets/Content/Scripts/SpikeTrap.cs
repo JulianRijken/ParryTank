@@ -11,9 +11,10 @@ public class SpikeTrap : MonoBehaviour
     [SerializeField] private float _upTime;
     [SerializeField] private float _downTime;
     [SerializeField] private float _startTimeOffset;
+    [SerializeField] private float _startTimeOffsetMultiplier;
     [SerializeField] private Vector3 _trapExtends;
     [SerializeField] private Vector3 _trapCenter;
-    
+
     [InfoBox("State goes 0(charge) 1(up) 2(down)")]
     [SerializeField] private string _animatorStateName;
 
@@ -27,8 +28,15 @@ public class SpikeTrap : MonoBehaviour
 
     IEnumerator SpikeTrapMoveCoroutine()
     {
-        yield return new WaitForSeconds(_startTimeOffset);
+        float startOffset = _startTimeOffset * _startTimeOffsetMultiplier;
+        float totalWaitTime = _chargeTime + _downTime + _upTime;
+
+        // Makes sure that if the wait time is really large it does not keep waiting to start it's loop
+        while (startOffset > totalWaitTime)
+            startOffset -= totalWaitTime;
         
+        yield return new WaitForSeconds(startOffset);
+
         while (true)
         {
             _animator.SetInteger(_animatorStateName, 0);

@@ -8,6 +8,11 @@ public class LevelSpawningOptions : ScriptableObject
 {
     [SerializeField] private WeightedLevelPart[] LevelParts;
 
+    /// <summary>
+    /// Picks a part randomly based on if the game has progressed far enough
+    /// </summary>
+    /// <param name="gameTimeInMinutes">Picks part based on how far along the game is</param>
+    /// <returns>Returns null if no part is possible</returns>
     public LevelPart GetLevelPart(float gameTimeInMinutes)
     {
         List<LevelPart> optionalLevelParts = new List<LevelPart>();
