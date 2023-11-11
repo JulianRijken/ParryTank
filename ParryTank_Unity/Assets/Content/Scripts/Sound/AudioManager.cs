@@ -81,7 +81,10 @@ namespace Julian.Sound
 
         public static void PlaySound(SoundType soundType, float volumeScale = 1f)
         {
-            Instance.PlaySoundOnInstance(soundType, volumeScale);
+            if(Instance != null)
+                Instance.PlaySoundOnInstance(soundType, volumeScale);
+            else
+                Debug.LogWarning("No Audio Manager in scene");
         }
 
     }

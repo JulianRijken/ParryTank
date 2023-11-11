@@ -1,4 +1,3 @@
-using System;
 using Julian.Sound;
 using UnityEngine;
 
@@ -20,11 +19,12 @@ public class BaseTank : MonoBehaviour, IDamageable
     [SerializeField] protected GameObject _deathParticle;
 
     [SerializeField] protected float _health = 100.0f;
-    protected bool _isDead = false;
-    
+
     [SerializeField] protected Transform _topTransform;
     [SerializeField] protected Transform _bodyTransform;
     [SerializeField] protected Transform _meshTransform;
+
+    protected bool _isDead = false;
 
     protected virtual void OnDeath()
     {
@@ -42,8 +42,7 @@ public class BaseTank : MonoBehaviour, IDamageable
             return;
 
         _health += delta;
-
-        Mathf.Max(0.0f,_health);
+        _health = Mathf.Max(0.0f,_health);
 
         if (_health <= 0.0f)
             OnDeath();

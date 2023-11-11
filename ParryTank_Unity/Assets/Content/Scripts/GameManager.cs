@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour
     public static PlayerController Player => Instance._playerController;
 
     public static GameState GetGameState => Instance._activeGameState;
+    public static float GetTimePlayedInSeconds => Instance._timePlayed;
+    public static float GetTimePlayedInMinutes => Instance._timePlayed / 60.0f;
 
 
     public static bool IsPointOnScreen(Vector3 point)

@@ -2788,13 +2788,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _preloadCount: 2
-  _updateNavMesh: 0
-  _startPice: {fileID: 0}
-  _levelPartPrefabs:
-  - {fileID: -2517786343927139104, guid: 2d02299c13b4faf4088de94269c13e40, type: 3}
-  - {fileID: 5919698647374612260, guid: 6c034f3ab82e3b24ab7efcb679450791, type: 3}
-  - {fileID: -7751493829094153579, guid: 4abed3e0d66673342979948b85f948ed, type: 3}
-  - {fileID: -7097521489153570726, guid: 2299f25782c02ea48a1880b936b9b989, type: 3}
+  _startPiece: {fileID: 0}
+  _levelSpawningOptions: {fileID: 11400000, guid: 62b6cabead2b5ed478d56a9e7c14e3e7,
+    type: 2}
   _camera: {fileID: 0}
 --- !u!4 &452693670
 Transform:
@@ -3090,21 +3086,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _preloadCount: 3
-  _updateNavMesh: 1
-  _startPice: {fileID: 0}
-  _levelPartPrefabs:
-  - {fileID: 7695361551524280291, guid: 9a822c446bc3851418655a2622e0a634, type: 3}
-  - {fileID: 7695361551524280291, guid: 0505149006f51c344820084469d9ad30, type: 3}
-  - {fileID: 7695361551524280291, guid: 6931d0d7883a19b43a3124a79240f29c, type: 3}
-  - {fileID: 7695361551524280291, guid: 48419ec9577da6140b311f01a3f8166e, type: 3}
-  - {fileID: 7695361551524280291, guid: 50260b718cf2fcf40a53af6cbd26de62, type: 3}
-  - {fileID: 7695361551524280291, guid: 81ce51582ac45204a8d25f32a69b16be, type: 3}
-  - {fileID: 7695361551524280291, guid: eedbe9853a1c30147937d8a5b7a4dcdf, type: 3}
-  - {fileID: 7695361551524280291, guid: 670736fdf8cdd4246ba2ce758a9038ed, type: 3}
-  - {fileID: 7695361551524280291, guid: c12fb3c79475c594e88e9e6ca430c192, type: 3}
-  - {fileID: 7695361551524280291, guid: ec387b843727690429b8497c9329364e, type: 3}
-  - {fileID: 7695361551524280291, guid: 109a444c99a51c74181a6d0e9aab8dd5, type: 3}
-  - {fileID: 7695361551524280291, guid: 54a98056d7ded7f4684ada071e53e384, type: 3}
+  _startPiece: {fileID: 0}
+  _levelSpawningOptions: {fileID: 11400000, guid: 0f77df7c28f3826429df0304043b462d,
+    type: 2}
   _camera: {fileID: 0}
 --- !u!4 &476363819
 Transform:
@@ -12071,13 +12055,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _preloadCount: 2
-  _updateNavMesh: 0
-  _startPice: {fileID: 0}
-  _levelPartPrefabs:
-  - {fileID: -427594007303400943, guid: ac5a28129ebc0a44fadc37510e80aa32, type: 3}
-  - {fileID: 4955833262644463679, guid: bdcd889081480dd4e8bc0faf6ff005d2, type: 3}
-  - {fileID: -7604695568155234838, guid: 35e6709da7b828c429727b69f9c6142d, type: 3}
-  - {fileID: 6968236319061278454, guid: 8399158b659b04d4ba78ab5158491f0b, type: 3}
+  _startPiece: {fileID: 0}
+  _levelSpawningOptions: {fileID: 11400000, guid: 344e715fd5bf4664c96cd27c5471f17d,
+    type: 2}
   _camera: {fileID: 0}
 --- !u!4 &2137596038
 Transform:
@@ -12192,6 +12172,36 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 2884302533439692251}
+    - target: {fileID: 8880295810383991868, guid: c3ef60dac96884747a7f35f738f093a2,
+        type: 3}
+      propertyPath: _levelSpeedCurve.m_Curve.Array.data[1].inSlope
+      value: 0.002431209
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880295810383991868, guid: c3ef60dac96884747a7f35f738f093a2,
+        type: 3}
+      propertyPath: _levelSpeedCurve.m_Curve.Array.data[2].inSlope
+      value: 0.0025217035
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880295810383991868, guid: c3ef60dac96884747a7f35f738f093a2,
+        type: 3}
+      propertyPath: _levelSpeedCurve.m_Curve.Array.data[1].outSlope
+      value: 0.0025217035
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880295810383991868, guid: c3ef60dac96884747a7f35f738f093a2,
+        type: 3}
+      propertyPath: _levelSpeedCurve.m_Curve.Array.data[1].outWeight
+      value: 0.07406598
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880295810383991868, guid: c3ef60dac96884747a7f35f738f093a2,
+        type: 3}
+      propertyPath: _levelSpeedCurve.m_Curve.Array.data[1].tangentMode
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880295810383991868, guid: c3ef60dac96884747a7f35f738f093a2,
+        type: 3}
+      propertyPath: _levelSpeedCurve.m_Curve.Array.data[2].tangentMode
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

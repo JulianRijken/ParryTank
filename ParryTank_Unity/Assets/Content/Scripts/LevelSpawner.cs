@@ -5,9 +5,8 @@ using Random = UnityEngine.Random;
 public class LevelSpawner : MonoBehaviour
 {
     [SerializeField] private int _preloadCount;
-    [SerializeField] private bool _updateNavMesh;
-    [SerializeField] private LevelPart _startPice;
-    [SerializeField] private LevelPart[] _levelPartPrefabs;
+    [SerializeField] private LevelPart _startPiece;
+    [SerializeField] private LevelSpawningOptions _levelSpawningOptions;
     [SerializeField] private Camera _camera;
 
     private LevelPart _lastSpawned;
@@ -19,8 +18,8 @@ public class LevelSpawner : MonoBehaviour
         if (_camera == null)
             _camera = Camera.main;
 
-        if(_startPice != null)
-            SpawnLevelPart(_startPice);
+        if(_startPiece != null)
+            SpawnLevelPart(_startPiece);
 
         for (int i = 0; i < _preloadCount; i++)
             SpawnLevelPart();
@@ -52,7 +51,7 @@ public class LevelSpawner : MonoBehaviour
 
     public void SetStartPiece(LevelPart startPiece)
     {
-        _startPice = startPiece;
+        _startPiece = startPiece;
     }
     
     private void SpawnLevelPart(LevelPart forcePart = null)
@@ -64,12 +63,19 @@ public class LevelSpawner : MonoBehaviour
         else   
             spawnPosition = _lastSpawned.transform.position + _lastSpawned.EndPoint;
       
-        LevelPart nextLevelPart = forcePart == null ? _levelPartPrefabs[Random.Range(0, _levelPartPrefabs.Length)] : forcePart;
-      
-        spawnPosition -= nextLevelPart.StartPoint;
-        
-        LevelPart nextLevelPartInstance = Instantiate(nextLevelPart,spawnPosition,Quaternion.identity);
-        _lastSpawned = nextLevelPartInstance;
-        _activeLevelParts.Enqueue(_lastSpawned);
+        LevelPart nextLevelPart = forcePart == null ? _levelSpawningOptions.GetLevelPart(GameManager.Instance ? GameManager.GetTimePlayedInMinutes : 0.0f) : forcePart;
+
+        if (nextLevelPart != null)
+        {
+            spawnPosition -= nextLevelPart.StartPoint;
+
+            LevelPart nextLevelPartInstance = Instantiate(nextLevelPart, spawnPosition, Quaternion.identity);
+            _lastSpawned = nextLevelPartInstance;
+            _activeLevelParts.Enqueue(_lastSpawned);
+        }
+        else
+        {
+            Debug.LogWarning("No level part to spawn!");
+        }
     }
 }
