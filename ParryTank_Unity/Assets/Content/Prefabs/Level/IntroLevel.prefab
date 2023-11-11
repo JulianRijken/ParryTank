@@ -1144,39 +1144,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
-      propertyPath: _bulletPrefab
-      value: 
-      objectReference: {fileID: 1588683786637055818, guid: beee38615a6c4634db9ece3a280aee00,
-        type: 3}
-    - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
-        type: 3}
       propertyPath: _topRotateSpeed
-      value: 100
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _aimBounceChecks
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
-      propertyPath: _fireDelayRange.x
-      value: 10
+      propertyPath: _fireDelayMinMax.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
-      propertyPath: _fireDelayRange.y
-      value: 10
+      propertyPath: _fireDelayMinMax.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _minimumAngleForFire
-      value: 5
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
+        type: 3}
+      propertyPath: _reTargetDelayMinMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
+        type: 3}
+      propertyPath: _reTargetDelayMinMax.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _minimumDistanceForFire
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8477222863797755523, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}

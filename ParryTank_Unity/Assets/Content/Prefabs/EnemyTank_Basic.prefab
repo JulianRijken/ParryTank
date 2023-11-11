@@ -658,13 +658,15 @@ MonoBehaviour:
   _bodyTransform: {fileID: 7084527675922480612}
   _meshTransform: {fileID: 8208750417766430414}
   _aimBounceChecks: 2
-  _minimumAngleForFire: 10
-  _minimumDistanceForFire: 15
+  _minimumAngleForFire: 5
+  _minimumDistanceForFire: 13
   _bulletPrefab: {fileID: 1588683786637055818, guid: beee38615a6c4634db9ece3a280aee00,
     type: 3}
   _fireTransform: {fileID: 617685159455904518}
   _extraFireTransforms: []
-  _fireDelayRange: {x: 1, y: 2}
+  _fireDelayMinMax: {x: 1.5, y: 2}
+  _reTargetDelayMinMax: {x: 1, y: 2}
   _ignoreLayers:
     serializedVersion: 2
     m_Bits: 256
+  _targetTransform: {fileID: 0}

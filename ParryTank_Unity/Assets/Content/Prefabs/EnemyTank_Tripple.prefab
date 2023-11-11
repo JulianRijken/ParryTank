@@ -845,7 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fec87659366814b97687025c000b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topRotateSpeed: 60
+  _topRotateSpeed: 70
   _bodyRotateSpeed: 0.5
   _topRotateType: 1
   _deathDecal: {fileID: 4459042517343489435, guid: 6c99933e10893524c8d3571900eb8ca7,
@@ -856,19 +856,21 @@ MonoBehaviour:
   _topTransform: {fileID: 6811713353735035213}
   _bodyTransform: {fileID: 7084527675922480612}
   _meshTransform: {fileID: 385330527302825906}
-  _aimBounceChecks: 1
+  _aimBounceChecks: 0
   _minimumAngleForFire: 35
   _minimumDistanceForFire: 15
-  _fireDelayRange: {x: 3, y: 4}
   _bulletPrefab: {fileID: 1588683786637055818, guid: beee38615a6c4634db9ece3a280aee00,
     type: 3}
   _fireTransform: {fileID: 617685159455904518}
   _extraFireTransforms:
   - {fileID: 46592602431239095}
   - {fileID: 7875033069427409371}
+  _fireDelayMinMax: {x: 1, y: 3}
+  _reTargetDelayMinMax: {x: 2, y: 3}
   _ignoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  _targetTransform: {fileID: 0}
 --- !u!1 &9140320310599756453
 GameObject:
   m_ObjectHideFlags: 0

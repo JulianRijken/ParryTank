@@ -74,7 +74,7 @@ MonoBehaviour:
   _rotateSpeed: 1500
   _maxBounces: 2
   _damage: 100
-  _maxLifeTime: 3
+  _maxLifeTime: 3.5
   _hitWallParticle: {fileID: 503861036384543719, guid: c84fe863f960167458c0e2c40093d699,
     type: 3}
   _destroyPartice: {fileID: 2321629161008104686, guid: baa2bd5a06304fc4d8fd11599ea9fd42,

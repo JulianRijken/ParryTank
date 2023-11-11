@@ -1,5 +1,6 @@
 using Julian.Sound;
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,6 +33,13 @@ public class PlayerController : BaseTank
     [SerializeField] private Transform _bombSpawnTransform;
     [SerializeField] private Transform _deflectPoint;
 
+#if UNITY_EDITOR
+    [Header("Debug")]
+    [SerializeField] private bool _enableControlsByDefault;
+    [SerializeField] private bool _invincibility;
+#endif
+
+
     private bool _canFire = true;
     private bool _canPlaceBomb = true;
     private float _tankDecalDistanceMoved;
@@ -61,6 +69,11 @@ public class PlayerController : BaseTank
         _controls.Player.Move.canceled += OnMovementInput;
         _controls.Player.PlaceBomb.performed += OnBombInput;
         _controls.Player.Attack.performed += OnAttackInput;
+        
+#if UNITY_EDITOR
+        if(_enableControlsByDefault)
+            _controls.Enable();
+#endif
         
         GameManager._onGameStart += OnGameStart;
     }
@@ -153,13 +166,16 @@ public class PlayerController : BaseTank
 
     protected override void OnDeath()
     {
-        base.OnDeath();
+        if (!_invincibility)
+        {
+            base.OnDeath();
 
-        Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
-        _meshTransform.gameObject.SetActive(false);
-        _tankCollider.enabled = false;
-        OnPlayerDeath?.Invoke();
-        EnableControls(false);
+            Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
+            _meshTransform.gameObject.SetActive(false);
+            _tankCollider.enabled = false;
+            OnPlayerDeath?.Invoke();
+            EnableControls(false);
+        }
     }
     
     private void OnGameStart()

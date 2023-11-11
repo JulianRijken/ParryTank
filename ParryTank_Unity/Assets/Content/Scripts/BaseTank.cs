@@ -59,6 +59,11 @@ public class BaseTank : MonoBehaviour, IDamageable
     
     protected void AimTowardsDirection(Vector3 aimDirection)
     {
+        aimDirection.y = 0;
+        
+        if(aimDirection.magnitude <= 0)
+            return;
+
         Quaternion targetRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
 
         switch (_topRotateType)

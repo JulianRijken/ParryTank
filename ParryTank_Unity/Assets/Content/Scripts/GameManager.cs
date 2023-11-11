@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private AudioSource _mainMusic;
 
+#if UNITY_EDITOR
+    [Header("Debug")]
+    [SerializeField] private bool _startGameImmediately ;
+    [SerializeField] private bool _staticLevel ;
+#endif
+    
     private Animator _gameAnimator;
 
     private bool _playerMoved;
@@ -57,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     public static PlayerController Player => Instance._playerController;
 
-    public static GameState GetGameState => GameManager.Instance._activeGameState;
+    public static GameState GetGameState => Instance._activeGameState;
 
 
     public static bool IsPointOnScreen(Vector3 point)
@@ -102,6 +108,11 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+#if UNITY_EDITOR
+        if(_staticLevel)
+            return;
+#endif
+        
         if (_activeGameState is GameState.InGame or GameState.GameOver && _playerMoved)
         {
             _timePlayed += Time.deltaTime;
@@ -125,7 +136,8 @@ public class GameManager : MonoBehaviour
             cameraPosition.x += levelMoveSpeed * Time.deltaTime;
             _topDownCamera.transform.position = cameraPosition;
 
-            _roller.Rotate(Vector3.forward, Time.deltaTime * _rollerRotateSpeedMultiplier * levelMoveSpeed);
+            if(_roller != null)
+                _roller.Rotate(Vector3.forward, Time.deltaTime * _rollerRotateSpeedMultiplier * levelMoveSpeed);
         }
     }
 
@@ -139,7 +151,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         _playerController.EnableControls(false);
         
-        DistanceBar.Instance.AddXPlayer(_highScore);
+        if(DistanceBar.Instance != null)
+            DistanceBar.Instance.AddXPlayer(_highScore);
+
+        #if UNITY_EDITOR
+        if (_startGameImmediately)
+            StartGame(false);
+        #endif
+        
     }
     
 
@@ -198,15 +217,20 @@ public class GameManager : MonoBehaviour
         if(!tutorial)
             _playerController.SetTutorialCompleted();
 
-        _levelSpawner.SetStartPiece(tutorial ? _tutorialStartPiece : _defaultStartPiece);
-        _levelSpawner.enabled = true;
-        
+        if (_levelSpawner != null)
+        {
+            _levelSpawner.SetStartPiece(tutorial ? _tutorialStartPiece : _defaultStartPiece);
+            _levelSpawner.enabled = true;
+        }
+
         _gameAnimator.SetBool("InGame", true);
         Cursor.visible = false;
         _timePlayed = 0;
         _activeGameState = GameState.InGame;
         _playerController.EnableControls(true);
-        _mainMusic.Play();
+        
+        if(_mainMusic != null)
+            _mainMusic.Play();
 
         _onGameStart?.Invoke();
     }
