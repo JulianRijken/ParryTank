@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a570e83527b8a641bd6275a29821115, type: 3}
+  m_Name: LevelSpawnSettings
+  m_EditorClassIdentifier: 
+  LevelParts:
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 9a822c446bc3851418655a2622e0a634,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 0505149006f51c344820084469d9ad30,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 6931d0d7883a19b43a3124a79240f29c,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 047ec3a3797182749b77792bacb7b11d,
+      type: 3}
+    SpawnAfterMinutes: 0.3
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 48419ec9577da6140b311f01a3f8166e,
+      type: 3}
+    SpawnAfterMinutes: 0.4
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 1e05b1a58453b934d8137bf81b05a1f2,
+      type: 3}
+    SpawnAfterMinutes: 0.4
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 50260b718cf2fcf40a53af6cbd26de62,
+      type: 3}
+    SpawnAfterMinutes: 0.7
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: d1df3a129672d5348ba662a7a158b369,
+      type: 3}
+    SpawnAfterMinutes: 1
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 81ce51582ac45204a8d25f32a69b16be,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: eedbe9853a1c30147937d8a5b7a4dcdf,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 670736fdf8cdd4246ba2ce758a9038ed,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: c12fb3c79475c594e88e9e6ca430c192,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: ec387b843727690429b8497c9329364e,
+      type: 3}
+    SpawnAfterMinutes: 0.5
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 109a444c99a51c74181a6d0e9aab8dd5,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 54a98056d7ded7f4684ada071e53e384,
+      type: 3}
+    SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 889779023e84b514e89c6c14244ae7b9,
+      type: 3}
+    SpawnAfterMinutes: 1
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 6efbfb8bb39dd9241bdf345e37411a4a,
+      type: 3}
+    SpawnAfterMinutes: 0.5
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: a451b317e6842f44e9aa33f0bce701fe,
+      type: 3}
+    SpawnAfterMinutes: 1

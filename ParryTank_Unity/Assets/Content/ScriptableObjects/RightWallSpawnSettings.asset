@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a570e83527b8a641bd6275a29821115, type: 3}
+  m_Name: RightWallSpawnSettings
+  m_EditorClassIdentifier: 
+  LevelParts:
+  - LevelPartPrefab: {fileID: -7097521489153570726, guid: 2299f25782c02ea48a1880b936b9b989,
+      type: 3}
+    SpawnAfterTime: 0
+  - LevelPartPrefab: {fileID: -7751493829094153579, guid: 4abed3e0d66673342979948b85f948ed,
+      type: 3}
+    SpawnAfterTime: 0
+  - LevelPartPrefab: {fileID: 5919698647374612260, guid: 6c034f3ab82e3b24ab7efcb679450791,
+      type: 3}
+    SpawnAfterTime: 0
+  - LevelPartPrefab: {fileID: -2517786343927139104, guid: 2d02299c13b4faf4088de94269c13e40,
+      type: 3}
+    SpawnAfterTime: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2827576526843657087}
   - component: {fileID: 6953948337769779905}
   - component: {fileID: 1543193463875571102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StretchCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a570e83527b8a641bd6275a29821115, type: 3}
+  m_Name: LeftWallSpawnSettings
+  m_EditorClassIdentifier: 
+  LevelParts:
+  - LevelPartPrefab: {fileID: -427594007303400943, guid: ac5a28129ebc0a44fadc37510e80aa32,
+      type: 3}
+    SpawnAfterTime: 0
+  - LevelPartPrefab: {fileID: 4955833262644463679, guid: bdcd889081480dd4e8bc0faf6ff005d2,
+      type: 3}
+    SpawnAfterTime: 0
+  - LevelPartPrefab: {fileID: -7604695568155234838, guid: 35e6709da7b828c429727b69f9c6142d,
+      type: 3}
+    SpawnAfterTime: 0
+  - LevelPartPrefab: {fileID: 6968236319061278454, guid: 8399158b659b04d4ba78ab5158491f0b,
+      type: 3}
+    SpawnAfterTime: 0

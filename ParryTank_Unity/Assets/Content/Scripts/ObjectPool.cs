@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// Yes this is written by Julian and not just copied, I just don't use it as it's pre mature optimization! 
 public class ObjectPool<T> where T : Component
 {
 
-    public List<T> m_PooledObjects = new List<T>();
+    public List<T> m_PooledObjects = new();
 
     public ObjectPool(int defaltSpawnCount = 0)
     {
@@ -24,8 +24,6 @@ public class ObjectPool<T> where T : Component
 
         return null;
     }
-
-
 
     public T GetObject(string name = "")
     {

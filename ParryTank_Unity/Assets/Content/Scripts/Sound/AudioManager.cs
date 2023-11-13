@@ -3,17 +3,14 @@ using UnityEngine;
 
 namespace Julian.Sound
 {
-
-    // Add option for delay/wait between allowing to play sounds and max sounds
-
+    // TODO: Add option for delay/wait between allowing to play sounds and max sounds
     public class AudioManager : MonoBehaviour
     {
-
         private GameSounds m_GameSounds;
         private List<AudioSource> m_PooledAudioSources = new List<AudioSource>();
-
-
+        
         private static AudioManager m_Instance;
+        
         public static AudioManager Instance
         {
             get
@@ -28,8 +25,11 @@ namespace Julian.Sound
                 return m_Instance;
             }
         }
-
-
+        
+        
+        /// <summary>
+        /// Returns an available audio source from the pool 
+        /// </summary>
         public AudioSource GetAudioSource()
         {
             AudioSource audioSource = null;
@@ -51,6 +51,21 @@ namespace Julian.Sound
             }
 
             return audioSource;
+        }
+        
+        // TODO: Add something like overwrite sterio pan / overwride clip or whatever overflows so you can do like left right wheel sound in left and right ear :)
+
+        /// <summary>
+        /// Plays sound globally
+        /// </summary>
+        /// <param name="Sound Type">From GameSounds Enum</param>
+        /// <param name="Volume Scale">Change volume</param>
+        public static void PlaySound(SoundType soundType, float volumeScale = 1f)
+        {
+            if(Instance != null)
+                Instance.PlaySoundOnInstance(soundType, volumeScale);
+            else
+                Debug.LogWarning("No Audio Manager in scene");
         }
 
         private AudioSource PlaySoundOnInstance(SoundType soundType, float volumeScale = 1f)
@@ -76,14 +91,6 @@ namespace Julian.Sound
 
             return audioSource;
         }
-
-        //? Add something like overwrite sterio pan / overwride clip or whatever overflows so you can do like left right wheel sound in left and right ear :) or somthing idk REMOVEM E
-
-        public static void PlaySound(SoundType soundType, float volumeScale = 1f)
-        {
-            Instance.PlaySoundOnInstance(soundType, volumeScale);
-        }
-
     }
 
 }

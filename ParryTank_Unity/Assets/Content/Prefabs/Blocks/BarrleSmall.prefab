@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2215374988923164694}
   - component: {fileID: 6825530499496562507}
   - component: {fileID: 7899303736356205631}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BarrleSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

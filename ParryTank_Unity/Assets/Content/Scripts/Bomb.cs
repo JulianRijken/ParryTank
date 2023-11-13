@@ -17,6 +17,7 @@ public class Bomb : MonoBehaviour
     private Animator _animator;
 
     private bool _exploded = false;
+    private static readonly int AnimatorStateKey = Animator.StringToHash("State");
 
     enum BombState
     {
@@ -32,21 +33,25 @@ public class Bomb : MonoBehaviour
 
     private  void Start()
     {
-        StartCoroutine(ExplodeCourutine());
+        StartCoroutine(ExplodeCoroutine());
     }
 
-    private IEnumerator ExplodeCourutine()
+    private IEnumerator ExplodeCoroutine()
     {
-        _animator.SetInteger("State", (int)BombState.Idle);
+        AudioManager.PlaySound(SoundType.bombPlanted);
+
+        _animator.SetInteger(AnimatorStateKey, (int)BombState.Idle);
 
         yield return new WaitForSeconds(_timeToBlink);
-        _animator.SetInteger("State", (int)BombState.blink);
-
-
+        _animator.SetInteger(AnimatorStateKey, (int)BombState.blink);
+        
         yield return new WaitForSeconds(_timeToExplode);
         Explode();
     }
 
+    /// <summary>
+    /// Explodes the bomb and the bombs in the surrounding area
+    /// </summary>
     private void Explode()
     {
         if (_exploded)
@@ -55,15 +60,14 @@ public class Bomb : MonoBehaviour
         _exploded = true;
 
         var hitColliders = Physics.OverlapSphere(transform.position + _center, _radius);
-
         foreach (Collider hitCollider in hitColliders) 
         {
             BreakableBlock breakableBlock = hitCollider.GetComponent<BreakableBlock>();
             breakableBlock?.BreakBlock();
 
             Bomb bomb = hitCollider.GetComponent<Bomb>();
-
-            bomb?.Invoke(nameof(bomb.Explode), _delayBeforeOtherBombExplode);
+            if(bomb != null && bomb != this)
+                bomb.Invoke(nameof(bomb.Explode), _delayBeforeOtherBombExplode);
 
             IDamageable damageable = hitCollider.GetComponent<IDamageable>();
             damageable?.OnHealthChange(-100.0f);
@@ -73,10 +77,14 @@ public class Bomb : MonoBehaviour
             Instantiate(_explodePrefab, transform.position + _center, Quaternion.identity);
 
         AudioManager.PlaySound(SoundType.explosion);
+        
         _event?.Invoke();
-        _animator.SetInteger("State",(int)BombState.BIEMBIEMBAMBAM);
+        _animator.SetInteger(AnimatorStateKey,(int)BombState.BIEMBIEMBAMBAM);
     }
 
+    /// <summary>
+    /// Called from animation in order to destroy itself after animating
+    /// </summary>
     public void OnExplodeEnd()
     {
         Destroy(gameObject);
