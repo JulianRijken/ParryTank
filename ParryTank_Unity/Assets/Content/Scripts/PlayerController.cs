@@ -45,7 +45,7 @@ public class PlayerController : BaseTank
     private bool _completedFireTutorial = false;
     private Vector2 _movementInput;
     private Vector2 _velocityPlanar;
-    private Quaternion _tankBodyTargetRotation= Quaternion.identity;
+    private Quaternion _tankBodyTargetRotation = Quaternion.identity;
 
     private Camera _mainCamera;
     private Controls _controls;

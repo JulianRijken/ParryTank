@@ -1,8 +1,10 @@
 using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor.GettingStarted;
 using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 public class UIManager : SerializedMonoBehaviour
@@ -14,12 +16,13 @@ public class UIManager : SerializedMonoBehaviour
     [DictionaryDrawerSettings(ValueLabel = "Screen GameObject", DisplayMode = DictionaryDisplayOptions.Foldout, KeyLabel = "SceenName")]
     [SerializeField] private Dictionary<UIScreens, GameObject> _screens;
 
+    [SerializeField] private GameObject _mainButtons;
+    [SerializeField] private GameObject _customButtons;
 
     private Animator _uiAnimator;
 
-    public static Action OnStartButtonPressed;
-    public static Action OnTutorialButtonPressed;
-    public static Action OnQuitButtonPressed;
+    public static event Action<LevelPart, bool> OnStartButtonPressed;
+    public static event Action OnQuitButtonPressed;
     
     private enum UIScreens
     {
@@ -83,18 +86,35 @@ public class UIManager : SerializedMonoBehaviour
         _uiAnimator.SetInteger("ActiveScreen",(int)screen);
     }
 
-    public void PressStartButton()
+    public void PressStartButton(LevelPart levelPart)
     {
-        OnStartButtonPressed?.Invoke();
+        OnStartButtonPressed?.Invoke(levelPart, false);
     }
-    
+
+    public void PressTutorialButton(LevelPart levelPart)
+    {
+        OnStartButtonPressed?.Invoke(levelPart, true);
+    }
+
+
+
     public void PressQuitButton()
     {
         OnQuitButtonPressed?.Invoke();
     }
-    
-    public void PressTutorialButton()
+
+    public void PressCustomButton()
     {
-        OnTutorialButtonPressed?.Invoke();
+        _customButtons.SetActive(true);
+        _mainButtons.SetActive(false);
     }
+
+    public void PressBackButton()
+    {
+        _customButtons.SetActive(false);
+        _mainButtons.SetActive(true);
+    }
+
+
+
 }

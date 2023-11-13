@@ -14,8 +14,10 @@ public class BreakableBlock : Block
         gameObject.SetActive(false);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(transform.position + _explodeParticleSpawnLocation, 0.25f);
     }
+#endif
 }

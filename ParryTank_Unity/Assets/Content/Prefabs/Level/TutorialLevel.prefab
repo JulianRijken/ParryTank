@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4545134936281149723}
   - component: {fileID: 7695361551524280291}
   m_Layer: 0
-  m_Name: IntroLevel
+  m_Name: TutorialLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1145,7 +1145,7 @@ PrefabInstance:
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _topRotateSpeed
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
@@ -1170,17 +1170,22 @@ PrefabInstance:
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _reTargetDelayMinMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _reTargetDelayMinMax.y
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
+        type: 3}
+      propertyPath: _maximumDistanceForFire
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7325193185999807999, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}
       propertyPath: _minimumDistanceForFire
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8477222863797755523, guid: a3f9d66c09a6bc145b06a5f11521f191,
         type: 3}

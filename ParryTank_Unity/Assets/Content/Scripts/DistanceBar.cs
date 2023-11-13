@@ -15,7 +15,8 @@ public class DistanceBar : MonoBehaviour
     private Transform _playerTransform;
     private Camera _mainCamera;
 
-    private int spawnDistance = -10;
+    private int _spawnDistance = -10;
+    private const int _spawnInterval = 10;
 
     public static DistanceBar Instance;
 
@@ -47,16 +48,16 @@ public class DistanceBar : MonoBehaviour
 
         Vector3 screenRightSidePosition = _mainCamera.ViewportToWorldPoint(new Vector2(1.0f, 0.0f));
         
-        if (screenRightSidePosition.x > spawnDistance)
+        if (screenRightSidePosition.x > _spawnDistance)
         {
-            DistanceBarItem prefab = (spawnDistance % 10 == 0 ? _distanceItemScene10Prefab : _distanceItemScene1Prefab);
+            DistanceBarItem prefab = (_spawnDistance % _spawnInterval == 0 ? _distanceItemScene10Prefab : _distanceItemScene1Prefab);
             DistanceBarItem newBarItem = Instantiate(prefab,prefab.transform.parent);
             newBarItem.transform.position =
                 new Vector3(newBarItem.transform.position.x, prefab.transform.parent.transform.position.y);
-            newBarItem.SetFollowPositionX(spawnDistance);
+            newBarItem.SetFollowPositionX(_spawnDistance);
             
             newBarItem.gameObject.SetActive(true);
-            spawnDistance += 1;
+            _spawnDistance += 1;
         }
     }
 

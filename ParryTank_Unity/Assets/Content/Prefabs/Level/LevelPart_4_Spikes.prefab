@@ -441,6 +441,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -593,6 +598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -821,6 +831,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -898,6 +913,11 @@ PrefabInstance:
     - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
         type: 3}
       propertyPath: _startTimeOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -979,6 +999,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1058,6 +1083,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1135,6 +1165,11 @@ PrefabInstance:
     - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
         type: 3}
       propertyPath: _startTimeOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1216,6 +1251,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1294,6 +1334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1374,6 +1419,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1452,6 +1502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1601,6 +1656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeTrap (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1679,6 +1739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1759,6 +1824,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1837,6 +1907,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1990,6 +2065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2218,6 +2298,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2369,6 +2454,11 @@ PrefabInstance:
     - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
         type: 3}
       propertyPath: _startTimeOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2667,6 +2757,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeTrap (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2819,6 +2914,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3045,6 +3145,11 @@ PrefabInstance:
     - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
         type: 3}
       propertyPath: _startTimeOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3274,6 +3379,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3353,6 +3463,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3431,6 +3546,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3585,6 +3705,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3733,6 +3858,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeTrap (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3811,6 +3941,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3965,6 +4100,11 @@ PrefabInstance:
       propertyPath: _startTimeOffset
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4117,6 +4257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _startTimeOffset
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4414,6 +4559,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeTrap (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4710,6 +4860,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeTrap (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4783,6 +4938,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpikeTrap (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906766627285384898, guid: 5c4413aae7c497b4ca341599610fecf2,
+        type: 3}
+      propertyPath: _startTimeOffsetMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

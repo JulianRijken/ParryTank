@@ -8,7 +8,9 @@ public class BombEnemyTank : BaseTank
     [SerializeField] private float _moveDistance;
     [SerializeField] private GameObject _bombPrefab;
     [SerializeField] private Transform _bombPlaceTransform;
-    
+
+    private const float _remainingDistanceTreshold = 1.0f;
+
     private NavMeshAgent _navMeshAgent;
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class BombEnemyTank : BaseTank
         
         if (_navMeshAgent.hasPath)
         {
-            if (_navMeshAgent.remainingDistance <= 1.0f)
+            if (_navMeshAgent.remainingDistance <= _remainingDistanceTreshold)
             {
                 SetNextDestination();
                 PlaceBomb();

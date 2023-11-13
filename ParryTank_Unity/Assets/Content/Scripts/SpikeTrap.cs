@@ -11,7 +11,7 @@ public class SpikeTrap : MonoBehaviour
     [SerializeField] private float _upTime;
     [SerializeField] private float _downTime;
     [SerializeField] private float _startTimeOffset;
-    [SerializeField] private float _startTimeOffsetMultiplier;
+    [SerializeField] private float _startTimeOffsetMultiplier = 1.0f;
     [SerializeField] private Vector3 _trapExtends;
     [SerializeField] private Vector3 _trapCenter;
 

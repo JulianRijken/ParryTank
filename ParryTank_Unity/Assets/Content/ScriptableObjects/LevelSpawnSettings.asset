@@ -22,12 +22,21 @@ MonoBehaviour:
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 6931d0d7883a19b43a3124a79240f29c,
       type: 3}
     SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 047ec3a3797182749b77792bacb7b11d,
+      type: 3}
+    SpawnAfterMinutes: 0.3
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 48419ec9577da6140b311f01a3f8166e,
       type: 3}
-    SpawnAfterMinutes: 0.5
+    SpawnAfterMinutes: 0.4
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 1e05b1a58453b934d8137bf81b05a1f2,
+      type: 3}
+    SpawnAfterMinutes: 0.4
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 50260b718cf2fcf40a53af6cbd26de62,
       type: 3}
     SpawnAfterMinutes: 0.7
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: d1df3a129672d5348ba662a7a158b369,
+      type: 3}
+    SpawnAfterMinutes: 1
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 81ce51582ac45204a8d25f32a69b16be,
       type: 3}
     SpawnAfterMinutes: 0
@@ -49,3 +58,12 @@ MonoBehaviour:
   - LevelPartPrefab: {fileID: 7695361551524280291, guid: 54a98056d7ded7f4684ada071e53e384,
       type: 3}
     SpawnAfterMinutes: 0
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 889779023e84b514e89c6c14244ae7b9,
+      type: 3}
+    SpawnAfterMinutes: 1
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: 6efbfb8bb39dd9241bdf345e37411a4a,
+      type: 3}
+    SpawnAfterMinutes: 0.5
+  - LevelPartPrefab: {fileID: 7695361551524280291, guid: a451b317e6842f44e9aa33f0bce701fe,
+      type: 3}
+    SpawnAfterMinutes: 1

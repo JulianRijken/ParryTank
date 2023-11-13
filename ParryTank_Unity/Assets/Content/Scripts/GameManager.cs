@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform _roller;
     [SerializeField] private float _rollerRotateSpeedMultiplier;
     [SerializeField] private LevelSpawner _levelSpawner;
-    [SerializeField] private LevelPart _defaultStartPiece;
-    [SerializeField] private LevelPart _tutorialStartPiece;
     
 
     [SerializeField] private float _deathXViewportPosition;
@@ -90,7 +88,6 @@ public class GameManager : MonoBehaviour
         _highScore = PlayerPrefs.GetInt("HighScore", 0);
 
         UIManager.OnStartButtonPressed += OnStartButtonPressed;
-        UIManager.OnTutorialButtonPressed += OnTutorialButtonPressed;
         UIManager.OnQuitButtonPressed += OnQuitButtonPressed;
 
         PlayerController.OnPlayerMoveRight += OnPlayerMove;
@@ -100,7 +97,6 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         UIManager.OnStartButtonPressed -= OnStartButtonPressed;
-        UIManager.OnTutorialButtonPressed -= OnTutorialButtonPressed;
         UIManager.OnQuitButtonPressed -= OnQuitButtonPressed;
 
         PlayerController.OnPlayerMoveRight -= OnPlayerMove;
@@ -161,7 +157,7 @@ public class GameManager : MonoBehaviour
 
         #if UNITY_EDITOR
         if (_startGameImmediately)
-            StartGame(false);
+            StartGame(null,false);
         #endif
     }
     
@@ -204,26 +200,22 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
-    private void OnStartButtonPressed()
+    private void OnStartButtonPressed(LevelPart levelPart, bool tutorial)
     {
-        StartGame(false);
+        StartGame(levelPart, tutorial);
     }
 
-    private void OnTutorialButtonPressed()
-    {
-        StartGame(true);
-    }
 
 
     
-    private void StartGame(bool tutorial)
+    private void StartGame(LevelPart levelPart, bool tutorial)
     {
         if(!tutorial)
             _playerController.SetTutorialCompleted();
 
         if (_levelSpawner != null)
         {
-            _levelSpawner.SetStartPiece(tutorial ? _tutorialStartPiece : _defaultStartPiece);
+            _levelSpawner.SetStartPiece(levelPart);
             _levelSpawner.enabled = true;
         }
 

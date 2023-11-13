@@ -25,10 +25,13 @@ public class BaseTank : MonoBehaviour, IDamageable
     [SerializeField] protected Transform _meshTransform;
 
     protected bool _isDead = false;
+    private const float _decalGroundOffset = 0.1f;
+    private const float _decalrotationOffset = 90.0f;
+
 
     protected virtual void OnDeath()
     {
-        Instantiate(_deathDecal, new Vector3(transform.position.x,0.1f,transform.position.z), Quaternion.Euler(90,0,0));
+        Instantiate(_deathDecal, new Vector3(transform.position.x, _decalGroundOffset, transform.position.z), Quaternion.Euler(_decalrotationOffset, 0,0));
         Instantiate(_deathParticle,transform.position, Quaternion.identity);
         _meshTransform.gameObject.SetActive(false);
         
