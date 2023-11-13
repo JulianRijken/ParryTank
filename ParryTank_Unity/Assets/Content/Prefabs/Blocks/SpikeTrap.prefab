@@ -156,9 +156,10 @@ MonoBehaviour:
   _upTime: 2
   _downTime: 1
   _startTimeOffset: 0
+  _startTimeOffsetMultiplier: 1
   _trapExtends: {x: 0.85, y: 0.5, z: 0.85}
   _trapCenter: {x: 0, y: 0.5, z: 0}
-  _animatorStateName: state
+  _animatorStateKey: state
 --- !u!95 &8768314048023210775
 Animator:
   serializedVersion: 5

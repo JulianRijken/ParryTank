@@ -16,8 +16,9 @@ public class SpikeTrap : MonoBehaviour
     [SerializeField] private Vector3 _trapCenter;
 
     [InfoBox("State goes 0(charge) 1(up) 2(down)")]
-    [SerializeField] private string _animatorStateName;
+    [SerializeField] private string _animatorStateKey;
 
+    
     private Animator _animator;
     
     private void Start()
@@ -26,6 +27,9 @@ public class SpikeTrap : MonoBehaviour
         StartCoroutine(SpikeTrapMoveCoroutine());
     }
 
+    /// <summary>
+    /// Handles the spike movement and updates the state of the animator
+    /// </summary>
     IEnumerator SpikeTrapMoveCoroutine()
     {
         float startOffset = _startTimeOffset * _startTimeOffsetMultiplier;
@@ -39,17 +43,20 @@ public class SpikeTrap : MonoBehaviour
 
         while (true)
         {
-            _animator.SetInteger(_animatorStateName, 0);
+            _animator.SetInteger(_animatorStateKey, 0);
             yield return new WaitForSeconds(_chargeTime);
             
-            _animator.SetInteger(_animatorStateName, 1);
+            _animator.SetInteger(_animatorStateKey, 1);
             yield return new WaitForSeconds(_downTime);
 
-            _animator.SetInteger(_animatorStateName, 2);
+            _animator.SetInteger(_animatorStateKey, 2);
             yield return new WaitForSeconds(_upTime);
         }
     }
 
+    /// <summary>
+    /// Triggered by the spike up animation
+    /// </summary>
     public void OnSpikeAttack()
     {
         var hitColliders =  Physics.OverlapBox(_trapCenter + transform.position, _trapExtends);
@@ -64,11 +71,11 @@ public class SpikeTrap : MonoBehaviour
         if(GameManager.IsPointOnScreen(transform.position))
             AudioManager.PlaySound(SoundType.spikeTrapAttack,0.8f);
     }
+    
     #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(_trapCenter + transform.position, _trapExtends * 2.0f);
     }
-
-#endif
+    #endif
 }

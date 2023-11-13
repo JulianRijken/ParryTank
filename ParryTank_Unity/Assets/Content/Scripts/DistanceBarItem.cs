@@ -16,8 +16,9 @@ public class DistanceBarItem : MonoBehaviour
     private Transform _targetTransform;
     private Camera _mainCamera;
     private Animator _animator;
-
-
+    
+    private static readonly int AnimatorTimeKey = Animator.StringToHash("Time");
+    
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -43,7 +44,7 @@ public class DistanceBarItem : MonoBehaviour
         Vector3 viewPortPoint = _mainCamera.WorldToViewportPoint(new Vector3(_followWorldPositonX,0));
 
         
-        _animator?.SetFloat("Time",viewPortPoint.x);
+        _animator?.SetFloat(AnimatorTimeKey,viewPortPoint.x);
         
         if(_destroyOutOfScreen && viewPortPoint.x < 0.0f)
             Destroy(gameObject);

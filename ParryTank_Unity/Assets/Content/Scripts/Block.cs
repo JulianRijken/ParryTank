@@ -1,6 +1,9 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Is used to apply a random material to the blocks
+/// </summary>
 public class Block : MonoBehaviour
 {
     [Header("Material")]

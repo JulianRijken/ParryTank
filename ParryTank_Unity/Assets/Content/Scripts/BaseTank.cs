@@ -1,6 +1,13 @@
 using Julian.Sound;
 using UnityEngine;
 
+/// <summary>
+/// Base tank class used as a base for all tanks
+/// Allows body and top rotation
+/// Handles health
+/// Allows for death effects
+/// Allows for aiming in direction
+/// </summary>
 public class BaseTank : MonoBehaviour, IDamageable
 {
     protected enum RotateType
@@ -50,7 +57,10 @@ public class BaseTank : MonoBehaviour, IDamageable
         if (_health <= 0.0f)
             OnDeath();
     }
-
+    
+    /// <summary>
+    /// Aims top of the tank in at a target
+    /// </summary>
     protected void AimTowards(Vector3 target)
     {
         Vector3 aimDirection = target - _topTransform.position;
@@ -59,6 +69,9 @@ public class BaseTank : MonoBehaviour, IDamageable
         AimTowardsDirection(aimDirection);
     }
     
+    /// <summary>
+    /// Aims top of the tank in a direction
+    /// </summary>
     protected void AimTowardsDirection(Vector3 aimDirection)
     {
         aimDirection.y = 0;

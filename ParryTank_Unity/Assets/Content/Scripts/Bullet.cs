@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         SetBulletDirection(transform.forward);
-
         Invoke(nameof(DestroyBullet), _maxLifeTime);
     }
 

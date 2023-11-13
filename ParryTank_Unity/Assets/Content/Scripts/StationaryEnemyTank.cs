@@ -188,7 +188,10 @@ public class StationaryEnemyTank : BaseTank
     }
     
     
-    
+    /// <summary>
+    /// Checks if there is an enemy or a player in the direction of the check using raycast
+    /// Handles bouncing
+    /// </summary>
     private CheckResult CheckHit(Vector3 direction)
     {
         CheckResult checkResult = new CheckResult(false,0.0f,direction);

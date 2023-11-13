@@ -235,6 +235,7 @@ public class PlayerController : BaseTank
         _fireParticle.Play();
         AudioManager.PlaySound(_fireSound);
             
+        // Find bullet in deflect area
         var collisions = Physics.OverlapSphere(_deflectPoint.position, _deflectRadius);
         foreach (var collision in collisions)
         {

@@ -61,6 +61,9 @@ public class DistanceBar : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds enemy tank to the distance bar
+    /// </summary>
     public void AddEnemy(Transform enemyTank)
     {
         DistanceBarItem newBarItem = Instantiate(_distanceItemEnemyPrefab,_distanceItemEnemyPrefab.transform.parent);
@@ -71,6 +74,9 @@ public class DistanceBar : MonoBehaviour
         newBarItem.gameObject.SetActive(true);
     }
     
+    /// <summary>
+    /// Adds death mark to the distance bar
+    /// </summary>
     public void AddX(float positionX)
     {
         DistanceBarItem newBarItem = Instantiate(_distanceItemXPrefab, _distanceItemXPrefab.transform.parent);
@@ -82,6 +88,9 @@ public class DistanceBar : MonoBehaviour
         newBarItem.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Adds death mark to the distance bar using the player color
+    /// </summary>
     public void AddXPlayer(float positionX)
     {
         DistanceBarItem newBarItem = Instantiate(_distanceItemXPrefab, _distanceItemXPrefab.transform.parent);

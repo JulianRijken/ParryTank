@@ -11,6 +11,9 @@ public class GameHint : MonoBehaviour
     private Animator _animator;
     [SerializeField] private UnityEvent _onHintTriggered;
 
+    private static readonly int AnimatorTriggerKey = Animator.StringToHash("Trigger");
+
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -34,6 +37,6 @@ public class GameHint : MonoBehaviour
             return;
         
         _onHintTriggered?.Invoke();
-        _animator.SetTrigger("Trigger");
+        _animator.SetTrigger(AnimatorTriggerKey);
     }
 }

@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 #endif
     
     private Animator _gameAnimator;
+    private static readonly int AnimatorInGameKey = Animator.StringToHash("InGame");
 
     private bool _playerMoved;
     private float _timePlayed;
@@ -51,15 +52,13 @@ public class GameManager : MonoBehaviour
     private int _lastScore;
 
     public static GameManager Instance { get; private set; }
-
     
     public static event Action _onGameStart;
     public static event Action _onGameOver;
 
     private GameState _activeGameState = GameState.MainMenu;
-    
-    public static PlayerController Player => Instance._playerController;
 
+    public static PlayerController Player => Instance._playerController;
     public static GameState GetGameState => Instance._activeGameState;
     public static float GetTimePlayedInSeconds => Instance._timePlayed;
     public static float GetTimePlayedInMinutes => Instance._timePlayed / 60.0f;
@@ -219,7 +218,7 @@ public class GameManager : MonoBehaviour
             _levelSpawner.enabled = true;
         }
 
-        _gameAnimator.SetBool("InGame", true);
+        _gameAnimator.SetBool(AnimatorInGameKey, true);
         Cursor.visible = false;
         _timePlayed = 0;
         _activeGameState = GameState.InGame;
